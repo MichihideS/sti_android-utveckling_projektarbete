@@ -3,6 +3,8 @@ plugins {
 
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -52,8 +54,15 @@ android {
 }
 
 dependencies {
+    // Compose Destination
     implementation("io.github.raamcosta.compose-destinations:core:1.10.2")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.10.2")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+
+    // Realtime Database
+    implementation("com.google.firebase:firebase-database-ktx")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

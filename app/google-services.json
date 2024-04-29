@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "369293164235",
+    "project_id": "projektarbete-au",
+    "storage_bucket": "projektarbete-au.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369293164235:android:d5d27808190c94bead254e",
+        "android_client_info": {
+          "package_name": "com.michihides.projektarbete"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVhkvZ8ZL1a1c_rg6bHJJC9DYt7fB-51s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
