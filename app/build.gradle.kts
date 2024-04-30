@@ -5,6 +5,9 @@ plugins {
     id("com.google.devtools.ksp")
 
     id("com.google.gms.google-services")
+
+    // Parcelize
+    id("kotlin-parcelize")
 }
 
 android {

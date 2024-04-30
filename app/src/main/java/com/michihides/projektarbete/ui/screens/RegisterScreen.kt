@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.database.DataSnapshot
@@ -27,18 +28,19 @@ fun RegisterScreen(
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
         .getReference("users")
-    
-    // Toasts, should use context for Composable function
+
     val context = LocalContext.current
+
+    // Toasts, should use context for Composable function
     val toastUserCreated = Toast.makeText(context, "User Created", Toast.LENGTH_SHORT)
     val toastUserExists = Toast.makeText(context, "User Already Exists", Toast.LENGTH_SHORT)
     val toastEmptyField = Toast.makeText(context, "Please Enter a Username", Toast.LENGTH_SHORT)
     val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
-
-    var user by remember {
-      mutableStateOf(
-          User("", "", 1)
-      )
+    
+    var user by rememberSaveable {
+        mutableStateOf(
+            User("", "", 1)
+        )
     }
     val userDatabase = db.child("").child(user.username)
 
