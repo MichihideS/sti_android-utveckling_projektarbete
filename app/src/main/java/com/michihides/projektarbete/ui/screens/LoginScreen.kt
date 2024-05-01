@@ -26,6 +26,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun LoginScreen(
     navigator: DestinationsNavigator
 ) {
+    // Firebase
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
         .getReference("users")
@@ -60,7 +61,11 @@ fun LoginScreen(
                         val databasePassword = snapshot.child("password").getValue(String::class.java)
 
                         if (user.password == databasePassword) {
-                            navigator.navigate(LoggedInScreenDestination)
+                            navigator.navigate(LoggedInScreenDestination(
+                                username = user.username,
+                                password = user.password,
+                                level = user.level
+                            ))
                         } else {
                             toastWrong.show()
                         }

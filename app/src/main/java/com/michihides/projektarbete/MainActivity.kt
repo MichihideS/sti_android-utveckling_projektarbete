@@ -40,11 +40,6 @@ class MainActivity : ComponentActivity() {
                     DestinationsNavHost(
                         navGraph = NavGraphs.root
                     )
-
-                    // Firebase
-                    db = FirebaseDatabase
-                        .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
-                        .getReference("users")
                 }
             }
         }

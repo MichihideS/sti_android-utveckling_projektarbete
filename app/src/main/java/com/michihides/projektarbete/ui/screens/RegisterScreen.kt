@@ -28,6 +28,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun RegisterScreen(
     navigator: DestinationsNavigator
 ) {
+    // Firebase
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
         .getReference("users")
