@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.michihides.projektarbete.destinations.ChangePasswordScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.models.User
@@ -95,7 +96,11 @@ fun ManageAccountScreen(
 
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Change Password") {
-
+            navigator.navigate(ChangePasswordScreenDestination(
+                username,
+                password,
+                level
+            ))
         }
 
         MainMenuButton(buttonText = "Delete Account") {
