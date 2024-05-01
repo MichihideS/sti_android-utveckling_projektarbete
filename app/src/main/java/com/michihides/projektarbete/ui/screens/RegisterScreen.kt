@@ -7,7 +7,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
@@ -15,7 +14,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.michihides.projektarbete.destinations.LoginScreenDestination
+import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
+import com.michihides.projektarbete.ui.composables.MainMenuButton
+import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.michihides.projektarbete.ui.composables.RegisterHandler
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -36,40 +39,46 @@ fun RegisterScreen(
     val toastUserExists = Toast.makeText(context, "User Already Exists", Toast.LENGTH_SHORT)
     val toastEmptyField = Toast.makeText(context, "Please Enter a Username", Toast.LENGTH_SHORT)
     val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
-    
+
     var user by rememberSaveable {
         mutableStateOf(
             User("", "", 1)
         )
     }
+
     val userDatabase = db.child("").child(user.username)
 
-    Column {
-        RegisterHandler(
+    RegisterHandler(
             user = user,
             onChangeUser = { user = it }
-        )
+    )
+
+    MainMenuButtonColumn {
 
         // Listener
-        Button(onClick = {
-           userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
-               override fun onDataChange(snapshot: DataSnapshot) {
-                   if (user.username == "") {
-                       toastEmptyField.show()
-                   } else if (snapshot.exists()) {
-                       toastUserExists.show()
-                   } else {
-                       userDatabase.setValue(user)
-                       toastUserCreated.show()
-                   }
-               }
+        MainMenuButton(buttonText = "Register") {
+            userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (user.username == "") {
+                        toastEmptyField.show()
+                    } else if (snapshot.exists()) {
+                        toastUserExists.show()
+                    } else {
+                        userDatabase.setValue(user)
+                        toastUserCreated.show()
+                        navigator.navigate(PlayGameScreenDestination)
+                    }
+                }
 
-               override fun onCancelled(error: DatabaseError) {
-                   toastError.show()
-               }
-           })
-        }) {
-            Text(text = "Register")
+                override fun onCancelled(error: DatabaseError) {
+                    toastError.show()
+                }
+            })
+        }
+
+        MainMenuButton(buttonText = "Back") {
+            navigator.navigate(PlayGameScreenDestination)
         }
     }
 }
+

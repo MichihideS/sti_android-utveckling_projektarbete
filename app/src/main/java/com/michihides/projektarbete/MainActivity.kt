@@ -13,7 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.michihides.projektarbete.destinations.AboutScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
+import com.michihides.projektarbete.ui.composables.MainMenuButton
+import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.michihides.projektarbete.ui.theme.ProjektarbeteTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
@@ -54,9 +57,13 @@ class MainActivity : ComponentActivity() {
 fun HomeScreen(
     navigator: DestinationsNavigator
 ) {
-    Column {
-        Button(onClick = { navigator.navigate(PlayGameScreenDestination) }) {
-            Text(text = "PlayG")
+    MainMenuButtonColumn {
+        MainMenuButton(buttonText = "Play Game") {
+            navigator.navigate(PlayGameScreenDestination)
+        }
+
+        MainMenuButton(buttonText = "About") {
+            navigator.navigate(AboutScreenDestination)
         }
     }
 }

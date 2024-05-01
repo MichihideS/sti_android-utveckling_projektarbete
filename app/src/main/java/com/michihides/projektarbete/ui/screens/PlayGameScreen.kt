@@ -4,7 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.michihides.projektarbete.destinations.HomeScreenDestination
+import com.michihides.projektarbete.destinations.LoginScreenDestination
 import com.michihides.projektarbete.destinations.RegisterScreenDestination
+import com.michihides.projektarbete.ui.composables.MainMenuButton
+import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -13,10 +17,17 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun PlayGameScreen(
     navigator: DestinationsNavigator
 ) {
-    Column {
-        Button(onClick = { navigator.navigate(RegisterScreenDestination) }) {
-            Text(text = "Register")
+    MainMenuButtonColumn {
+        MainMenuButton(buttonText = "Login") {
+            navigator.navigate(LoginScreenDestination)
+        }
+
+        MainMenuButton(buttonText = "Register") {
+            navigator.navigate(RegisterScreenDestination)
+        }
+
+        MainMenuButton(buttonText = "Back") {
+            navigator.navigate(HomeScreenDestination)
         }
     }
-
 }
