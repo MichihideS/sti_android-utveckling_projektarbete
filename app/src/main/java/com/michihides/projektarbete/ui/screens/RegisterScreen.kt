@@ -19,7 +19,7 @@ import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
-import com.michihides.projektarbete.ui.composables.RegisterHandler
+import com.michihides.projektarbete.ui.composables.UserHandler
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -48,7 +48,7 @@ fun RegisterScreen(
 
     val userDatabase = db.child("").child(user.username)
 
-    RegisterHandler(
+    UserHandler(
             user = user,
             onChangeUser = { user = it }
     )
