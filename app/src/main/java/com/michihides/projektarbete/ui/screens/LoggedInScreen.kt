@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import com.michihides.projektarbete.destinations.HomeScreenDestination
+import com.michihides.projektarbete.destinations.LevelOneScreenDestination
 import com.michihides.projektarbete.destinations.ManageAccountScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.MainMenuButton
@@ -27,7 +28,7 @@ fun LoggedInScreen(
 
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Play") {
-
+            navigator.navigate(LevelOneScreenDestination)
         }
 
         MainMenuButton(buttonText = "Manage Account") {
