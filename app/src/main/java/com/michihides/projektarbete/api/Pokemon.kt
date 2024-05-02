@@ -2,11 +2,11 @@ package com.michihides.projektarbete.api
 
 import com.google.gson.annotations.SerializedName
 
-data class Pokemon(
-    val sprites: Sprites
-)
+class Pokemon {
+    lateinit var sprites: Sprites
+}
 
-data class Sprites(
+class Sprites {
     @SerializedName("front_default")
-    val frontSprite: String
-)
+    var frontSprite: String = ""
+}
