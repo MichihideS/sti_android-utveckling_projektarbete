@@ -13,7 +13,8 @@ import com.michihides.projektarbete.destinations.AboutScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
-import com.michihides.projektarbete.ui.composables.PokemonDataUI
+import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
+import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.michihides.projektarbete.ui.theme.ProjektarbeteTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
@@ -52,7 +53,9 @@ fun HomeScreen(
     navigator: DestinationsNavigator
 ) {
     MainMenuButtonColumn {
-        PokemonDataUI()
+        PokemonAllyDataUI("pikachu")
+        PokemonEnemyDataUI("charmander")
+
 
         MainMenuButton(buttonText = "Play Game") {
             navigator.navigate(PlayGameScreenDestination)

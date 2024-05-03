@@ -12,10 +12,10 @@ class PokemonViewModel: ViewModel() {
     private val _pokemonUiState = mutableStateOf<Pokemon?>(null)
     var pokemonUiState: State<Pokemon?> = _pokemonUiState
 
-    fun fetchPokemonData() {
+    fun fetchPokemonData(pokemonName: String) {
         viewModelScope.launch {
             try {
-                _pokemonUiState.value = PokemonRetrofit.fetchPokemon()
+                _pokemonUiState.value = PokemonRetrofit.fetchPokemon(pokemonName)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

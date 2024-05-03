@@ -21,13 +21,10 @@ object PokemonRetrofit {
             .build()
     }
 
-    private val getPokemonApi by lazy {
-        retrofit.create<PokemonApi>().getData()
-    }
-
-    suspend fun fetchPokemon(): Pokemon {
+    suspend fun fetchPokemon(pokemonName: String): Pokemon {
         return suspendCoroutine { continuation ->
-            getPokemonApi.enqueue(object : Callback<Pokemon> {
+            val getPokemonApi = retrofit.create<PokemonApi>().getData(pokemonName)
+                getPokemonApi.enqueue(object : Callback<Pokemon> {
 
                 override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
                     if (response.isSuccessful) {
@@ -35,7 +32,7 @@ object PokemonRetrofit {
                         if (pokemon != null) {
                             continuation.resume(pokemon)
                         } else {
-                            continuation.resumeWithException(Exception("Unsuccessful response: ${response.code()}"))
+                            continuation.resumeWithException(Exception("Bad Response: ${response.code()}"))
                         }
                     }
                 }

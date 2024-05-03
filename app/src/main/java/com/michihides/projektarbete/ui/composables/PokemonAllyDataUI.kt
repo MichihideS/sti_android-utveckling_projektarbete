@@ -18,23 +18,25 @@ import coil.compose.AsyncImage
 import com.michihides.projektarbete.ui.viewModels.PokemonViewModel
 
 @Composable
-fun PokemonDataUI(viewModel: PokemonViewModel = viewModel()) {
+fun PokemonAllyDataUI(
+    pokemonName: String,
+    viewModel: PokemonViewModel = viewModel()
+) {
     val pokemon by viewModel.pokemonUiState
-    
+
     // Trigger fetch on initial composition
     LaunchedEffect(true) {
-        viewModel.fetchPokemonData()
+        viewModel.fetchPokemonData(pokemonName)
     }
-    
+
     if (pokemon != null) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Text(text = pokemon?.sprites.toString())
             AsyncImage(
-                model = pokemon?.sprites?.frontSprite,
+                model = pokemon?.sprites?.backSprite,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
