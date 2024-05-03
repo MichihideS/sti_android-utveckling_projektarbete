@@ -29,7 +29,11 @@ fun LoggedInScreen(
 
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "New Game") {
-            navigator.navigate(ChoosePokemonScreenDestination)
+            navigator.navigate(ChoosePokemonScreenDestination(
+                username,
+                password,
+                level
+            ))
         }
 
         MainMenuButton(buttonText = "Manage Account") {

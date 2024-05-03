@@ -6,17 +6,27 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
+import com.michihides.projektarbete.destinations.LevelOneScreenDestination
+import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
+import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
-@Preview
-fun ChoosePokemonScreen() {
+fun ChoosePokemonScreen(
+    username: String,
+    password: String,
+    level: Int,
+    navigator: DestinationsNavigator
+) {
+    var pokemonChoice: String
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -31,7 +41,13 @@ fun ChoosePokemonScreen() {
             ) {
                 PokemonChooseOneDataUI(pokemonName = "pikachu")
                 ChoosePokemonButton(buttonText = "Pikachu") {
-
+                    pokemonChoice = "pikachu"
+                    navigator.navigate(LevelOneScreenDestination(
+                        username,
+                        password,
+                        level,
+                        pokemonChoice
+                    ))
                 }
             }
         }
@@ -40,8 +56,8 @@ fun ChoosePokemonScreen() {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PokemonChooseTwoDataUI(pokemonName = "psyduck")
-                ChoosePokemonButton(buttonText = "Psyduck") {
+                PokemonChooseTwoDataUI(pokemonName = "dragonair")
+                ChoosePokemonButton(buttonText = "Dragonair") {
 
                 }
             }
@@ -49,11 +65,21 @@ fun ChoosePokemonScreen() {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PokemonChooseThreeDataUI(pokemonName = "lucario")
-                ChoosePokemonButton(buttonText = "Lucario") {
+                PokemonChooseThreeDataUI(pokemonName = "jigglypuff")
+                ChoosePokemonButton(buttonText = "Jigglypuff") {
 
                 }
             }
+        }
+
+        MainMenuButton(buttonText = "Back") {
+            navigator.navigate(
+                LoggedInScreenDestination(
+                username,
+                password,
+                level
+                )
+            )
         }
     }
 }

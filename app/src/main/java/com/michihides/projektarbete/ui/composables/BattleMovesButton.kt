@@ -12,18 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// A reusable Button for the choose pokemon screen
+// A reusable button for the moves in the pokemon battles
 @Composable
-fun ChoosePokemonButton(
+fun BattleMovesButton(
     buttonText: String,
     onClick: () -> Unit
 ) {
     Button(onClick = onClick,
         modifier = Modifier
             .offset(y = (-30).dp)
-            .padding(bottom = 6.dp)
-            .width(140.dp)
-            .height(40.dp),
+            .padding(12.dp)
+            .width(180.dp)
+            .height(60.dp),
         shape = RoundedCornerShape(5.dp)
     ){
         Text(

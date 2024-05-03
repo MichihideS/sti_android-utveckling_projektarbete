@@ -44,7 +44,7 @@ fun PokemonEnemyDataUI(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(200.dp)
+                    .size(300.dp)
                     .clip(shape = CircleShape)
             )
 
