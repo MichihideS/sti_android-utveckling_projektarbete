@@ -45,6 +45,6 @@ fun PokemonAllyDataUI(
             )
         }
     } else {
-        Text(text = "Loading...")
+        Text(text = "Wait patiently...")
     }
 }

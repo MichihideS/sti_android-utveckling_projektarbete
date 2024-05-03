@@ -3,6 +3,7 @@ package com.michihides.projektarbete.ui.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.michihides.projektarbete.destinations.ChoosePokemonScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LevelOneScreenDestination
 import com.michihides.projektarbete.destinations.ManageAccountScreenDestination
@@ -27,8 +28,8 @@ fun LoggedInScreen(
     }
 
     MainMenuButtonColumn {
-        MainMenuButton(buttonText = "Play") {
-            navigator.navigate(LevelOneScreenDestination)
+        MainMenuButton(buttonText = "New Game") {
+            navigator.navigate(ChoosePokemonScreenDestination)
         }
 
         MainMenuButton(buttonText = "Manage Account") {
