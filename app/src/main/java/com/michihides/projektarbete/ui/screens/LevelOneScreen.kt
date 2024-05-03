@@ -4,11 +4,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
 import com.michihides.projektarbete.ui.composables.ChoosePokemonHandler
 import com.michihides.projektarbete.ui.composables.EnemyPokemonColumn
+import com.michihides.projektarbete.ui.composables.HealthBar
 import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
 import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.ramcosta.composedestinations.annotation.Destination
@@ -39,6 +42,10 @@ fun LevelOneScreen(
     AllyPokemonColumn {
         PokemonAllyDataUI(pokemonName = pokemonChoice)
     }
+    
+    val health = rememberSaveable { mutableIntStateOf((360)) }
+
+    HealthBar(health = health)
     
     BattleMovesColumn {
         Row {

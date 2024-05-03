@@ -58,7 +58,13 @@ fun ChoosePokemonScreen(
             ) {
                 PokemonChooseTwoDataUI(pokemonName = "dragonair")
                 ChoosePokemonButton(buttonText = "Dragonair") {
-
+                    pokemonChoice = "dragonair"
+                    navigator.navigate(LevelOneScreenDestination(
+                        username,
+                        password,
+                        level,
+                        pokemonChoice
+                    ))
                 }
             }
 
@@ -67,7 +73,13 @@ fun ChoosePokemonScreen(
             ) {
                 PokemonChooseThreeDataUI(pokemonName = "jigglypuff")
                 ChoosePokemonButton(buttonText = "Jigglypuff") {
-
+                    pokemonChoice = "jigglypuff"
+                    navigator.navigate(LevelOneScreenDestination(
+                        username,
+                        password,
+                        level,
+                        pokemonChoice
+                    ))
                 }
             }
         }

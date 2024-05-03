@@ -3,6 +3,8 @@ package com.michihides.projektarbete.ui.composables
 import androidx.compose.runtime.Composable
 import com.michihides.projektarbete.models.Pikachu
 import androidx.compose.ui.graphics.Color
+import com.michihides.projektarbete.models.Dragonair
+import com.michihides.projektarbete.models.Jigglypuff
 
 @Composable
 fun ChoosePokemonHandler(
@@ -27,6 +29,36 @@ fun ChoosePokemonHandler(
         pokemonAttackStrength.add(Pikachu().strengthTwo)
         pokemonAttackStrength.add(Pikachu().strengthThree)
         pokemonAttackStrength.add(Pikachu().strengthFour)
+    } else if (pokemonChoice == "dragonair") {
+        pokemonAttacks.add(Dragonair().attackOne)
+        pokemonAttacks.add(Dragonair().attackTwo)
+        pokemonAttacks.add(Dragonair().attackThree)
+        pokemonAttacks.add(Dragonair().attackFour)
+
+        pokemonElements.add(Dragonair().elementOne)
+        pokemonElements.add(Dragonair().elementTwo)
+        pokemonElements.add(Dragonair().elementThree)
+        pokemonElements.add(Dragonair().elementFour)
+
+        pokemonAttackStrength.add(Dragonair().strengthOne)
+        pokemonAttackStrength.add(Dragonair().strengthTwo)
+        pokemonAttackStrength.add(Dragonair().strengthThree)
+        pokemonAttackStrength.add(Dragonair().strengthFour)
+    } else if (pokemonChoice == "jigglypuff") {
+        pokemonAttacks.add(Jigglypuff().attackOne)
+        pokemonAttacks.add(Jigglypuff().attackTwo)
+        pokemonAttacks.add(Jigglypuff().attackThree)
+        pokemonAttacks.add(Jigglypuff().attackFour)
+
+        pokemonElements.add(Jigglypuff().elementOne)
+        pokemonElements.add(Jigglypuff().elementTwo)
+        pokemonElements.add(Jigglypuff().elementThree)
+        pokemonElements.add(Jigglypuff().elementFour)
+
+        pokemonAttackStrength.add(Jigglypuff().strengthOne)
+        pokemonAttackStrength.add(Jigglypuff().strengthTwo)
+        pokemonAttackStrength.add(Jigglypuff().strengthThree)
+        pokemonAttackStrength.add(Jigglypuff().strengthFour)
     }
 
     return Triple(pokemonAttacks, pokemonElements, pokemonAttackStrength)
