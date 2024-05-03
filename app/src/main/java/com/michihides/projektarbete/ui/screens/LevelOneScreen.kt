@@ -29,11 +29,11 @@ fun LevelOneScreen(
         Text(text = "Level $level")
         Text(text = pokemonChoice)
     }
-    
-    val pokemonAttacks = ChoosePokemonHandler(pokemonChoice = pokemonChoice)
+
+    val (pokemonAttacks, pokemonElements, pokemonAttackStrength) = ChoosePokemonHandler(pokemonChoice)
 
     EnemyPokemonColumn {
-        PokemonEnemyDataUI(pokemonName = "charizard")    
+        PokemonEnemyDataUI(pokemonName = "charizard")
     }
     
     AllyPokemonColumn {
@@ -42,15 +42,37 @@ fun LevelOneScreen(
     
     BattleMovesColumn {
         Row {
-            BattleMovesButton(buttonText = pokemonAttacks.component1()) {
+            BattleMovesButton(
+                buttonTextMove = pokemonAttacks.component1(),
+                buttonTextPower = pokemonAttackStrength.component1(),
+                buttonColor = pokemonElements.component1()
+            ) {
+
             }
-            BattleMovesButton(buttonText = pokemonAttacks.component2()) {
-            }
+
+           BattleMovesButton(
+               buttonTextMove = pokemonAttacks.component2(),
+               buttonTextPower = pokemonAttackStrength.component2(),
+               buttonColor = pokemonElements.component2()
+           ) {
+
+           }
         }
         Row {
-            BattleMovesButton(buttonText = pokemonAttacks.component3()) {
+            BattleMovesButton(
+                buttonTextMove = pokemonAttacks.component3(),
+                buttonTextPower = pokemonAttackStrength.component3(),
+                buttonColor = pokemonElements.component3()
+            ) {
+
             }
-            BattleMovesButton(buttonText = pokemonAttacks.component4()) {
+
+            BattleMovesButton(
+                buttonTextMove = pokemonAttacks.component4(),
+                buttonTextPower = pokemonAttackStrength.component4(),
+                buttonColor = pokemonElements.component4()
+            ) {
+
             }
         }
     }

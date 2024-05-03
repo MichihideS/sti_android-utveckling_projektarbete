@@ -17,7 +17,7 @@ fun BattleMovesColumn(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(bottom = 120.dp)
+            .padding(bottom = 30.dp)
     ) {
         content()
     }
