@@ -18,12 +18,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.michihides.projektarbete.ui.viewModels.PokemonViewModel
+import com.michihides.projektarbete.ui.viewModels.PokemonEnemyViewModel
 
 @Composable
 fun PokemonEnemyDataUI(
     pokemonName: String,
-    viewModel: PokemonViewModel = viewModel()
+    viewModel: PokemonEnemyViewModel = viewModel()
 ) {
     val pokemon by viewModel.pokemonUiState
     

@@ -37,8 +37,6 @@ class MainActivity : ComponentActivity() {
                     // Destinations
                     DestinationsNavHost(
                         navGraph = NavGraphs.root
-
-
                     )
                 }
             }
@@ -53,10 +51,6 @@ fun HomeScreen(
     navigator: DestinationsNavigator
 ) {
     MainMenuButtonColumn {
-        PokemonAllyDataUI("pikachu")
-        PokemonEnemyDataUI("charmander")
-
-
         MainMenuButton(buttonText = "Play Game") {
             navigator.navigate(PlayGameScreenDestination)
         }

@@ -15,12 +15,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.michihides.projektarbete.ui.viewModels.PokemonViewModel
+import com.michihides.projektarbete.ui.viewModels.PokemonAllyViewModel
 
 @Composable
 fun PokemonAllyDataUI(
     pokemonName: String,
-    viewModel: PokemonViewModel = viewModel()
+    viewModel: PokemonAllyViewModel = viewModel()
 ) {
     val pokemon by viewModel.pokemonUiState
 
