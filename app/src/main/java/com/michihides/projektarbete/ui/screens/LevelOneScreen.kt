@@ -4,14 +4,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
 import com.michihides.projektarbete.ui.composables.ChoosePokemonHandler
 import com.michihides.projektarbete.ui.composables.EnemyPokemonColumn
 import com.michihides.projektarbete.ui.composables.HealthBar
+import com.michihides.projektarbete.ui.composables.HealthBarEnemy
 import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
 import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.ramcosta.composedestinations.annotation.Destination
@@ -43,8 +46,10 @@ fun LevelOneScreen(
         PokemonAllyDataUI(pokemonName = pokemonChoice)
     }
     
-    val health = rememberSaveable { mutableIntStateOf((360)) }
+    var health by rememberSaveable { mutableIntStateOf((360)) }
+    var healthEnemy by rememberSaveable { mutableIntStateOf((360)) }
 
+    HealthBarEnemy(healthEnemy = healthEnemy)
     HealthBar(health = health)
     
     BattleMovesColumn {
@@ -54,7 +59,7 @@ fun LevelOneScreen(
                 buttonTextPower = pokemonAttackStrength.component1(),
                 buttonColor = pokemonElements.component1()
             ) {
-
+                healthEnemy = 300
             }
 
            BattleMovesButton(
@@ -62,7 +67,7 @@ fun LevelOneScreen(
                buttonTextPower = pokemonAttackStrength.component2(),
                buttonColor = pokemonElements.component2()
            ) {
-
+                health = 200
            }
         }
         Row {

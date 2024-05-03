@@ -51,7 +51,7 @@ fun PokemonEnemyDataUI(
             // Sound setup for the pokemon cry
             val context = LocalContext.current
             val pokemonSound = Uri.parse(pokemon?.cries?.latest)
-            val sound = MediaPlayer.create(context, pokemonSound)
+            val sound  = MediaPlayer.create(context, pokemonSound)
             sound.start()
 
         }

@@ -15,19 +15,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HealthBar(
-    health: Int
+fun HealthBarEnemy(
+    healthEnemy: Int
 ) {
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "HP: $health",
+            text = "HP: $healthEnemy",
             fontSize = 32.sp,
             modifier = Modifier
-                .offset(90.dp)
-                .padding(top = 270.dp)
+                .offset((-90).dp)
+                .padding(top = 50.dp)
                 .border(5.dp, Color.Black)
                 .background(Color.Gray)
                 .padding(20.dp)
