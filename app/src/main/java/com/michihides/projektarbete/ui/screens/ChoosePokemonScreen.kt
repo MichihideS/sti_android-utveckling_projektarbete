@@ -14,6 +14,7 @@ import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
+import com.michihides.projektarbete.ui.theme.Wind
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
