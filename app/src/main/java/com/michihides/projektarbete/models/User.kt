@@ -8,9 +8,9 @@ import kotlinx.parcelize.Parcelize
 // User Object which contains a username, password and level
 @Parcelize
 data class User(
-    val username: String,
-    val password: String,
-    val level: Int
+    var username: String,
+    var password: String,
+    var level: Int
 ) : Parcelable, DatabaseReference.CompletionListener {
     override fun onComplete(error: DatabaseError?, ref: DatabaseReference) {
         return

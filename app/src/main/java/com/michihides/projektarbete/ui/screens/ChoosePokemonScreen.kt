@@ -7,13 +7,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
 import com.michihides.projektarbete.destinations.LevelOneScreenDestination
+import com.michihides.projektarbete.destinations.LevelThreeScreenDestination
+import com.michihides.projektarbete.destinations.LevelTwoScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
+import com.michihides.projektarbete.ui.composables.ChoosePokemon
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
+import com.michihides.projektarbete.ui.composables.GameFinished
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
+import com.michihides.projektarbete.ui.composables.WinnerOptions
 import com.michihides.projektarbete.ui.theme.Wind
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -43,56 +48,67 @@ fun ChoosePokemonScreen(
                 PokemonChooseOneDataUI(pokemonName = "pikachu")
                 ChoosePokemonButton(buttonText = "Pikachu") {
                     pokemonChoice = "pikachu"
-                    navigator.navigate(LevelOneScreenDestination(
+
+                    ChoosePokemon(
                         username,
                         password,
                         level,
+                        navigator,
                         pokemonChoice
-                    ))
+                    )
+                }
+
+
+                Row {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        PokemonChooseTwoDataUI(pokemonName = "dragonair")
+                        ChoosePokemonButton(buttonText = "Dragonair") {
+                            pokemonChoice = "dragonair"
+
+                            ChoosePokemon(
+                                username,
+                                password,
+                                level,
+                                navigator,
+                                pokemonChoice
+                            )
+                        }
+                    }
+
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        PokemonChooseThreeDataUI(pokemonName = "jigglypuff")
+                        ChoosePokemonButton(buttonText = "Jigglypuff") {
+                            pokemonChoice = "jigglypuff"
+
+                            ChoosePokemon(
+                                username,
+                                password,
+                                level,
+                                navigator,
+                                pokemonChoice
+                            )
+                        }
+                    }
                 }
             }
-        }
 
-        Row {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                PokemonChooseTwoDataUI(pokemonName = "dragonair")
-                ChoosePokemonButton(buttonText = "Dragonair") {
-                    pokemonChoice = "dragonair"
-                    navigator.navigate(LevelOneScreenDestination(
-                        username,
-                        password,
-                        level,
-                        pokemonChoice
-                    ))
-                }
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                PokemonChooseThreeDataUI(pokemonName = "jigglypuff")
-                ChoosePokemonButton(buttonText = "Jigglypuff") {
-                    pokemonChoice = "jigglypuff"
-                    navigator.navigate(LevelOneScreenDestination(
-                        username,
-                        password,
-                        level,
-                        pokemonChoice
-                    ))
-                }
-            }
-        }
-
-        MainMenuButton(buttonText = "Back") {
-            navigator.navigate(
-                LoggedInScreenDestination(
-                username,
-                password,
-                level
+            MainMenuButton(buttonText = "Back") {
+                navigator.navigate(
+                    LoggedInScreenDestination(
+                    username,
+                    password,
+                    level
+                    )
                 )
-            )
+            }
         }
+    }
+
+    if (level > 3) {
+        GameFinished(navigator)
     }
 }

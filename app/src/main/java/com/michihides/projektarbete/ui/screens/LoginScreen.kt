@@ -59,7 +59,7 @@ fun LoginScreen(
                         toastEmptyField.show()
                     } else if (snapshot.exists()) {
                         val databasePassword = snapshot.child("password").getValue(String::class.java)
-
+                            user.level = snapshot.child("level").getValue(Int::class.java)!!
                         if (user.password == databasePassword) {
                             navigator.navigate(LoggedInScreenDestination(
                                 username = user.username,

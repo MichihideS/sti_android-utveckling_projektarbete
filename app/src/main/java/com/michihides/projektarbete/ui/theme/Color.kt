@@ -15,3 +15,5 @@ val Wind = Color(0xFF4fb05f)
 val Fire = Color(0xFFa83122)
 val Water = Color(0xFF226ea8)
 val Earth = Color(0xFF664536)
+
+val BlackTransparent = Color(0xCA000000)
