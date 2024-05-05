@@ -178,25 +178,6 @@ fun LevelTwoScreen(
         }
     }
 
-    // If enemy health goes to 0 you win and WinnerOptions show
-    if (healthEnemy < 1) {
-        WinnerOptions(
-            username,
-            password,
-            level,
-            navigator
-        )
-    }
-
-    // If your health goes to 0 you lose and LoserOptions show
-    if (health < 1 && healthEnemy > 1) {
-        LoserOptions(
-            username,
-            password,
-            level,
-            navigator)
-    }
-
     // Shows what attack you use and calculates how much damaged it did to the enemy
     AnimatedVisibility (afterAttacks) {
         AllyAttack(attack = allyAttack)
@@ -232,6 +213,27 @@ fun LevelTwoScreen(
             battleMoves = true
             afterEnemyAttacks = false
         }
+    }
+
+    // If enemy health goes to 0 you win and WinnerOptions show
+    if (healthEnemy < 1) {
+        battleMoves = false
+        WinnerOptions(
+            username,
+            password,
+            level,
+            navigator
+        )
+    }
+
+    // If your health goes to 0 you lose and LoserOptions show
+    if (health < 1 && healthEnemy > 1) {
+        battleMoves = false
+        LoserOptions(
+            username,
+            password,
+            level,
+            navigator)
     }
 }
 
