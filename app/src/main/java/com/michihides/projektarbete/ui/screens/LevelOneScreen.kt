@@ -1,19 +1,25 @@
 package com.michihides.projektarbete.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
+import com.michihides.projektarbete.ui.composables.BackGroundBattle
+import com.michihides.projektarbete.ui.composables.BackGroundImage
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
 import com.michihides.projektarbete.ui.composables.ChoosePokemonHandler
+import com.michihides.projektarbete.ui.composables.EnemyChallenge
 import com.michihides.projektarbete.ui.composables.EnemyPokemonColumn
 import com.michihides.projektarbete.ui.composables.HealthBar
 import com.michihides.projektarbete.ui.composables.HealthBarEnemy
@@ -29,6 +35,7 @@ import com.michihides.projektarbete.ui.theme.Water
 import com.michihides.projektarbete.ui.theme.Wind
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.delay
 
 @Destination
 @Composable
@@ -39,6 +46,8 @@ fun LevelOneScreen(
     pokemonChoice: String,
     navigator: DestinationsNavigator
 ) {
+    BackGroundBattle()
+
     val (pokemonAttacks, pokemonElements, pokemonAttackStrength) = ChoosePokemonHandler(pokemonChoice)
 
     EnemyPokemonColumn {
@@ -52,6 +61,7 @@ fun LevelOneScreen(
     var health by rememberSaveable { mutableIntStateOf((360)) }
     var healthEnemy by rememberSaveable { mutableIntStateOf((360)) }
     var allyElement = Color.Blue
+    var battleMoves by rememberSaveable { mutableStateOf(false) }
 
     when (pokemonChoice) {
         "pikachu" -> allyElement = Wind
@@ -59,66 +69,75 @@ fun LevelOneScreen(
         "jigglypuff" -> allyElement = Earth
     }
 
+    LaunchedEffect(Unit) {
+        delay(3200)
+        battleMoves = true
+    }
+
     HealthBarEnemy(healthEnemy = healthEnemy)
     HealthBar(health = health)
+
+    EnemyChallenge(enemy = "Charizard")
     
-    BattleMovesColumn {
-        Row {
-            BattleMovesButton(
-                buttonTextMove = pokemonAttacks.component1(),
-                buttonTextPower = pokemonAttackStrength.component1(),
-                buttonColor = pokemonElements.component1()
-            ) {
-                healthEnemy -= LevelOneBattleAlly(
-                    pokemonElements = pokemonElements.component1(),
-                    pokemonAttackStrength = pokemonAttackStrength.component1()
-                )
+    AnimatedVisibility(visible = battleMoves) {
+        BattleMovesColumn {
+            Row {
+                BattleMovesButton(
+                    buttonTextMove = pokemonAttacks.component1(),
+                    buttonTextPower = pokemonAttackStrength.component1(),
+                    buttonColor = pokemonElements.component1()
+                ) {
+                    healthEnemy -= LevelOneBattleAlly(
+                        pokemonElements = pokemonElements.component1(),
+                        pokemonAttackStrength = pokemonAttackStrength.component1()
+                    )
 
-                val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
-                health -= enemyAttackPower
+                    val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
+                    health -= enemyAttackPower
+                }
+
+                BattleMovesButton(
+                    buttonTextMove = pokemonAttacks.component2(),
+                    buttonTextPower = pokemonAttackStrength.component2(),
+                    buttonColor = pokemonElements.component2()
+                ) {
+                    healthEnemy -= LevelOneBattleAlly(
+                        pokemonElements = pokemonElements.component2(),
+                        pokemonAttackStrength = pokemonAttackStrength.component2()
+                    )
+
+                    val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
+                    health -= enemyAttackPower
+                }
             }
+            Row {
+                BattleMovesButton(
+                    buttonTextMove = pokemonAttacks.component3(),
+                    buttonTextPower = pokemonAttackStrength.component3(),
+                    buttonColor = pokemonElements.component3()
+                ) {
+                    healthEnemy -= LevelOneBattleAlly(
+                        pokemonElements = pokemonElements.component3(),
+                        pokemonAttackStrength = pokemonAttackStrength.component3()
+                    )
 
-           BattleMovesButton(
-               buttonTextMove = pokemonAttacks.component2(),
-               buttonTextPower = pokemonAttackStrength.component2(),
-               buttonColor = pokemonElements.component2()
-           ) {
-               healthEnemy -= LevelOneBattleAlly(
-                   pokemonElements = pokemonElements.component2(),
-                   pokemonAttackStrength = pokemonAttackStrength.component2()
-               )
+                    val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
+                    health -= enemyAttackPower
+                }
 
-               val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
-               health -= enemyAttackPower
-           }
-        }
-        Row {
-            BattleMovesButton(
-                buttonTextMove = pokemonAttacks.component3(),
-                buttonTextPower = pokemonAttackStrength.component3(),
-                buttonColor = pokemonElements.component3()
-            ) {
-                healthEnemy -= LevelOneBattleAlly(
-                    pokemonElements = pokemonElements.component3(),
-                    pokemonAttackStrength = pokemonAttackStrength.component3()
-                )
+                BattleMovesButton(
+                    buttonTextMove = pokemonAttacks.component4(),
+                    buttonTextPower = pokemonAttackStrength.component4(),
+                    buttonColor = pokemonElements.component4()
+                ) {
+                    healthEnemy -= LevelOneBattleAlly(
+                        pokemonElements = pokemonElements.component4(),
+                        pokemonAttackStrength = pokemonAttackStrength.component4()
+                    )
 
-                val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
-                health -= enemyAttackPower
-            }
-
-            BattleMovesButton(
-                buttonTextMove = pokemonAttacks.component4(),
-                buttonTextPower = pokemonAttackStrength.component4(),
-                buttonColor = pokemonElements.component4()
-            ) {
-                healthEnemy -= LevelOneBattleAlly(
-                    pokemonElements = pokemonElements.component4(),
-                    pokemonAttackStrength = pokemonAttackStrength.component4()
-                )
-
-                val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
-                health -= enemyAttackPower
+                    val (enemyAttackPower, enemyAttack) = levelOneBattleEnemy(allyElement)
+                    health -= enemyAttackPower
+                }
             }
         }
     }

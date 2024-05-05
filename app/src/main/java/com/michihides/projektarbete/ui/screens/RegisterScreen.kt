@@ -53,11 +53,6 @@ fun RegisterScreen(
 
     val userDatabase = db.child("").child(user.username)
 
-    UserHandler(
-            user = user,
-            onChangeUser = { user = it }
-    )
-
     MainMenuButtonColumn {
 
         // Listener
@@ -85,5 +80,10 @@ fun RegisterScreen(
             navigator.navigate(PlayGameScreenDestination)
         }
     }
+
+    UserHandler(
+        user = user,
+        onChangeUser = { user = it }
+    )
 }
 

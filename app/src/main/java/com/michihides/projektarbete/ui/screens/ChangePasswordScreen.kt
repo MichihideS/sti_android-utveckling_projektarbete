@@ -53,13 +53,6 @@ fun ChangePasswordScreen(
 
     val userDatabase = db.child("").child(user.username)
 
-    Column {
-        ChangePassword(
-            user = user,
-            onChangeUser = { user = it }
-        )
-    }
-
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Change Password") {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -88,4 +81,9 @@ fun ChangePasswordScreen(
             ))
         }
     }
+
+    ChangePassword(
+        user = user,
+        onChangeUser = { user = it }
+    )
 }

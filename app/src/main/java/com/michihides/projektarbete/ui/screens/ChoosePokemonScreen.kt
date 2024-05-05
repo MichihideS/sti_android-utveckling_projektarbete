@@ -1,16 +1,19 @@
 package com.michihides.projektarbete.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.michihides.projektarbete.destinations.LevelOneScreenDestination
 import com.michihides.projektarbete.destinations.LevelThreeScreenDestination
 import com.michihides.projektarbete.destinations.LevelTwoScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
+import com.michihides.projektarbete.ui.composables.BackGroundImage
 import com.michihides.projektarbete.ui.composables.ChoosePokemon
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
 import com.michihides.projektarbete.ui.composables.GameFinished
@@ -21,6 +24,7 @@ import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
 import com.michihides.projektarbete.ui.composables.WinnerOptions
+import com.michihides.projektarbete.ui.theme.GeneralBackground
 import com.michihides.projektarbete.ui.theme.Wind
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -37,7 +41,9 @@ fun ChoosePokemonScreen(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .background(GeneralBackground)
     ) {
         TitleTextNormal(title = "Choose your Pokemon")
 

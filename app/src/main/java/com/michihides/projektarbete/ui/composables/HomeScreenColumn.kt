@@ -77,14 +77,17 @@ fun HomeScreenColumn(
         ), label = ""
     )
 
+    // Sets the background
+    Column(modifier = Modifier.background(DarkHomeScreen)) {}
+
+    BackGroundImage()
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .background(DarkHomeScreen)
             .clickable(onClick = { MainButtonSound(context); onClick() })
     ) {
-
         if (hiddenMenu) {
             Image(
                 painter = painterResource(id = R.drawable.pokemon),
@@ -107,7 +110,7 @@ fun HomeScreenColumn(
                 .padding(bottom = 150.dp)
         )
     }
-    
+
     AnimatedVisibility (hiddenMenuTwo) {
         Image(
             painter = painterResource(id = R.drawable.pokemon_ball),
@@ -122,7 +125,7 @@ fun HomeScreenColumn(
     AnimatedVisibility (hiddenText) {
         Text(
             text = "Click Anywhere to Start",
-            fontSize = 32.sp,
+            fontSize = 24.sp,
             textAlign = TextAlign.Center,
             color = Color.Black,
             modifier = Modifier
@@ -138,7 +141,7 @@ fun HomeScreenColumn(
     AnimatedVisibility (hiddenText) {
         Text(
             text = "Click Anywhere to Start",
-            fontSize = 32.sp,
+            fontSize = 24.sp,
             textAlign = TextAlign.Center,
             color = Color.White,
             modifier = Modifier

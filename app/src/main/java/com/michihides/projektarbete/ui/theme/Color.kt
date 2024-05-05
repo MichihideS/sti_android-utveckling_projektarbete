@@ -18,3 +18,6 @@ val Earth = Color(0xFF664536)
 
 val BlackTransparent = Color(0xCA000000)
 val DarkHomeScreen = Color(0xFF0F154B)
+val GeneralBackground = Color(0x27172AC4)
+val MainButtonColor = Color(0x9E090E35)
+val DarkerWhite = Color(0xBEFFFFFF)

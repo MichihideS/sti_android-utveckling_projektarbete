@@ -50,11 +50,6 @@ fun LoginScreen(
 
     val userDatabase = db.child("").child(user.username)
 
-    UserHandler(
-        user = user,
-        onChangeUser = { user = it }
-    )
-
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Login") {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -87,5 +82,10 @@ fun LoginScreen(
         MainMenuButton(buttonText = "Back") {
             navigator.navigate(PlayGameScreenDestination)
         }
-}
+    }
+
+    UserHandler(
+        user = user,
+        onChangeUser = { user = it }
+    )
 }
