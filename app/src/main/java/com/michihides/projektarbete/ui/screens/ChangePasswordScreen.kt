@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener
 import com.michihides.projektarbete.destinations.ManageAccountScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.ChangePassword
+import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination
@@ -28,11 +29,15 @@ fun ChangePasswordScreen(
     level: Int,
     navigator: DestinationsNavigator
 ) {
+
     // Firebase
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
         .getReference("users")
 
+    /* Need to use context when using a composable function
+    ** When in fragment or activity you can use this
+    */
     val context = LocalContext.current
 
     // Toasts, should use context for Composable function

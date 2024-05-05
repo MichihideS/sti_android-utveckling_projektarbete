@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
@@ -18,6 +19,7 @@ import com.michihides.projektarbete.ui.composables.HealthBar
 import com.michihides.projektarbete.ui.composables.HealthBarEnemy
 import com.michihides.projektarbete.ui.composables.LevelTwoBattleAlly
 import com.michihides.projektarbete.ui.composables.LoserOptions
+import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
 import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.michihides.projektarbete.ui.composables.WinnerOptions
@@ -37,13 +39,6 @@ fun LevelTwoScreen(
     pokemonChoice: String,
     navigator: DestinationsNavigator
 ) {
-    Column {
-        Text(text = username)
-        Text(text = password)
-        Text(text = "Level $level")
-        Text(text = pokemonChoice)
-    }
-
     val (pokemonAttacks, pokemonElements, pokemonAttackStrength) = ChoosePokemonHandler(pokemonChoice)
 
     EnemyPokemonColumn {

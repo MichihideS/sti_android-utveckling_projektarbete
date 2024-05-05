@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.michihides.projektarbete.destinations.LevelOneScreenDestination
 import com.michihides.projektarbete.destinations.LevelThreeScreenDestination
@@ -13,6 +14,7 @@ import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.ui.composables.ChoosePokemon
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
 import com.michihides.projektarbete.ui.composables.GameFinished
+import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI

@@ -8,6 +8,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -15,9 +16,15 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MainMenuButton(
     buttonText: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    Button(onClick = onClick,
+    /* Need to use context when using a composable function
+    ** When in fragment or activity you can use this
+    */
+    val context = LocalContext.current
+
+    // Plays a sound and allows content for the button
+    Button(onClick = { MainButtonSound(context) ; onClick() },
         modifier = Modifier
             .padding(12.dp)
             .width(250.dp)

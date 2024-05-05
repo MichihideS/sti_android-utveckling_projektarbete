@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,7 +30,12 @@ fun BattleMovesButton(
     buttonColor: Color,
     onClick: () -> Unit
 ) {
-    Button(onClick = onClick,
+    /* Need to use context when using a composable function
+    ** When in fragment or activity you can use this
+    */
+    val context = LocalContext.current
+
+    Button(onClick = { MainButtonSound(context) ; onClick() },
         colors = ButtonDefaults.buttonColors(buttonColor),
         modifier = Modifier
             .offset(y = (-30).dp)

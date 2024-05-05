@@ -9,6 +9,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -18,7 +19,12 @@ fun ChoosePokemonButton(
     buttonText: String,
     onClick: () -> Unit
 ) {
-    Button(onClick = onClick,
+    /* Need to use context when using a composable function
+    ** When in fragment or activity you can use this
+    */
+    val context = LocalContext.current
+
+    Button(onClick = { MainButtonSound(context) ; onClick() },
         modifier = Modifier
             .offset(y = (-30).dp)
             .padding(bottom = 6.dp)

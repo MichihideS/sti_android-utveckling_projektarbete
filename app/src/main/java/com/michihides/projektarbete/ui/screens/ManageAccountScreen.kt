@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.database.DataSnapshot
@@ -22,6 +23,7 @@ import com.michihides.projektarbete.destinations.ChangePasswordScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.models.User
+import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination
@@ -47,12 +49,6 @@ fun ManageAccountScreen(
     }
 
     val userDatabase = db.child("").child(user.username)
-
-    Column {
-        Text(text = username)
-        Text(text = password)
-        Text(text = "Level $level")
-    }
 
     /* An Alertdialog that will show itself if set to true which happens when you press
     ** the Delete Account Button
