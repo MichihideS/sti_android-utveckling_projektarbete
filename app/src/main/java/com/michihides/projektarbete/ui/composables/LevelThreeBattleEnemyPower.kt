@@ -1,10 +1,12 @@
 package com.michihides.projektarbete.ui.composables
 
 import androidx.compose.ui.graphics.Color
+import com.michihides.projektarbete.ui.theme.Earth
+import com.michihides.projektarbete.ui.theme.Fire
 import com.michihides.projektarbete.ui.theme.Water
 import com.michihides.projektarbete.ui.theme.Wind
 
-fun levelOneBattleEnemyPower(
+fun levelThreeBattleEnemyPower(
     allyElement: Color,
     enemyAttack: String,
 ): Int {
@@ -14,35 +16,35 @@ fun levelOneBattleEnemyPower(
     ** has depending on which element the ally is
      */
     when (enemyAttack) {
-        "Flamethrower" -> {
+        "Blizzard" -> {
             power = when (allyElement) {
-                Wind -> 120
-                Water -> 40
+                Fire -> 210
+                Earth -> 70
+                else -> 140
+            }
+        }
+
+        "Icy Wind" -> {
+            power = when (allyElement) {
+                Fire -> 120
+                Earth -> 40
                 else -> 80
             }
         }
 
-        "Flare Blitz" -> {
+        "Wing Attack" -> {
             power = when (allyElement) {
-                Wind -> 180
-                Water -> 60
-                else -> 120
+                Earth -> 90
+                Fire -> 30
+                else -> 60
             }
         }
 
-        "Ember" -> {
+        "Fly" -> {
             power = when (allyElement) {
-                Wind -> 60
-                Water -> 20
-                else -> 40
-            }
-        }
-
-        "Tackle" -> {
-            power = when (allyElement) {
-                Wind -> 10
-                Water -> 30
-                else -> 20
+                Earth -> 135
+                Fire -> 45
+                else -> 90
             }
         }
     }

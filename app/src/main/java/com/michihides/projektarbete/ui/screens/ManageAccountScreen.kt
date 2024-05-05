@@ -59,7 +59,7 @@ fun ManageAccountScreen(
 
     if(showDeleteAccount.value) {
         AlertDialog(
-            onDismissRequest = {  },
+            onDismissRequest = { showDeleteAccount.value = false },
             title = { Text(text = "Delete Account")},
             text = { Text(
                 text = "Are you sure you want to delete your account?",

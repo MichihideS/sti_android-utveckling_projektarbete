@@ -56,6 +56,9 @@ fun EnemyChallenge(
                 color = Color.White,
                 lineHeight = 54.sp,
                 modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .border(3.dp, Color.White)
+                    .padding(30.dp)
             )
         }
     }

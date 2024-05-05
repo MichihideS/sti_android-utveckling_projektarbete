@@ -55,8 +55,9 @@ fun EnemyAttack(
                 fontSize = 26.sp,
                 textAlign = TextAlign.Center,
                 color = Color.Red,
-                lineHeight = 54.sp,
+                lineHeight = 36.sp,
                 modifier = Modifier
+                    .padding(horizontal = 10.dp)
                     .border(5.dp, Color.Black)
                     .background(BlackTransparent)
                     .padding(24.dp)

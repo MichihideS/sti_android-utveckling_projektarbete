@@ -1,14 +1,14 @@
 package com.michihides.projektarbete.ui.composables
 
-fun levelOneBattleEnemyAttack():String {
+fun levelTwoBattleEnemyAttack():String {
     // Randoms between attack 1-4
     val randomAttack = (1..4).shuffled().first()
 
     // Attack names
-    val attackOne = "Flamethrower"
-    val attackTwo = "Flare Blitz"
-    val attackThree = "Ember"
-    val attackFour = "Tackle"
+    val attackOne = "Ice Beam"
+    val attackTwo = "Dragon Wing"
+    val attackThree = "Wing Attack"
+    val attackFour = "Outrage"
     var attackChose = ""
 
     // Returns the attack that gets randomized

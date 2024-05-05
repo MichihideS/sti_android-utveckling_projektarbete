@@ -6,21 +6,17 @@ import com.michihides.projektarbete.ui.theme.Fire
 import com.michihides.projektarbete.ui.theme.Water
 import com.michihides.projektarbete.ui.theme.Wind
 
-fun levelTwoBattleEnemy(
+fun levelTwoBattleEnemyPower(
     allyElement: Color,
-): Pair <Int, String> {
-    val randomAttack = (1..4).shuffled().first()
-
-    val attackOne = "Ice Beam"
-    val attackTwo = "Dragon Wing"
-    val attackThree = "Wing Attack"
-    val attackFour = "Outrage"
-    var attackChose = ""
+    enemyAttack: String,
+): Int {
     var power = 0
 
-    when (randomAttack) {
-        1 -> {
-            attackChose = attackOne
+    /* Depending on which attack gets randomized, returns how much power the attack
+    ** has depending on which element the ally is
+     */
+    when (enemyAttack) {
+        "Ice Beam" -> {
             power = when (allyElement) {
                 Fire -> 45
                 Water -> 135
@@ -28,8 +24,7 @@ fun levelTwoBattleEnemy(
             }
         }
 
-        2 -> {
-            attackChose = attackTwo
+        "Dragon Wing" -> {
             power = when (allyElement) {
                 Wind -> 40
                 Water -> 120
@@ -37,8 +32,7 @@ fun levelTwoBattleEnemy(
             }
         }
 
-        3 -> {
-            attackChose = attackThree
+        "Wing Attack" -> {
             power = when (allyElement) {
                 Earth -> 90
                 Fire -> 30
@@ -46,8 +40,7 @@ fun levelTwoBattleEnemy(
             }
         }
 
-        4 -> {
-            attackChose = attackFour
+        "Outrage" -> {
             power = when (allyElement) {
                 Wind -> 50
                 Water -> 150
@@ -56,7 +49,7 @@ fun levelTwoBattleEnemy(
         }
     }
 
-    return Pair(power, attackChose)
+    return power
 }
 
 
