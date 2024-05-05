@@ -17,3 +17,4 @@ val Water = Color(0xFF226ea8)
 val Earth = Color(0xFF664536)
 
 val BlackTransparent = Color(0xCA000000)
+val DarkHomeScreen = Color(0xFF0F154B)
