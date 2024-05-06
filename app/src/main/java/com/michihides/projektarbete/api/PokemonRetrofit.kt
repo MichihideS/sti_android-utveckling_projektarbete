@@ -22,12 +22,12 @@ object PokemonRetrofit {
             .build()
     }
 
-    /* Fetches from the Pokemon API and get the full data back in form of a body
-    ** If not successful will give error with the error response
+    /* Fetches from the Pokemon API and get the full data back in form of a body depending on what
+    ** Pokemon it is. If not successful will give error with the error response
      */
     suspend fun fetchPokemon(pokemonName: String): Pokemon {
         return suspendCoroutine { continuation ->
-            val getPokemonApi = retrofit.create<PokemonApi>().getData(pokemonName)
+            val getPokemonApi: Call<Pokemon> = retrofit.create<PokemonApi>().getData(pokemonName)
                 getPokemonApi.enqueue(object : Callback<Pokemon> {
 
                 override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
