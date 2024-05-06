@@ -11,9 +11,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -73,6 +76,7 @@ fun HomeScreenColumn(
         hiddenText = true
     }
 
+
     // Flash animation that pulsates between original size and 90%
     val flash by rememberInfiniteTransition(label = "").animateFloat(
         initialValue = 0.9f,
@@ -88,71 +92,147 @@ fun HomeScreenColumn(
 
     BackGroundImage()
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .clickable(onClick = { mainButtonSound(context); onClick() })
+    BoxWithConstraints(
+        contentAlignment = Alignment.Center
     ) {
-        if (hiddenMenu) {
-            Image(
-                painter = painterResource(id = R.drawable.pokemon),
-                contentDescription = "",
-                contentScale = ContentScale.Fit,
+        if (maxWidth < 500.dp) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .padding(horizontal = 10.dp)
-                    .padding(bottom = 400.dp)
+                    .clickable(onClick = { mainButtonSound(context); onClick() })
+            ) {
+                if (hiddenMenu) {
+                    Image(
+                        painter = painterResource(id = R.drawable.pokemon),
+                        contentDescription = "",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp)
+                            .padding(bottom = 350.dp)
 
-            )
+                    )
+                }
+            }
+
+            AnimatedVisibility (hiddenMenuTwo) {
+                Image(
+                    painter = painterResource(id = R.drawable.ultimate),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .padding(bottom = 120.dp)
+                        .size(150.dp)
+                )
+            }
+
+            AnimatedVisibility (hiddenMenuTwo) {
+                Image(
+                    painter = painterResource(id = R.drawable.pokemon_ball),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .padding(horizontal = 180.dp)
+                        .padding(bottom = 200.dp)
+                )
+            }
+
+            // Acts as a shadow
+            AnimatedVisibility (hiddenText) {
+                Text(
+                    text = "Click Anywhere to Start",
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(top = 550.dp)
+                        .offset(
+                            x = 2.dp,
+                            y = 2.dp
+                        )
+                        .scale(flash)
+                )
+            }
+
+            AnimatedVisibility (hiddenText) {
+                Text(
+                    text = "Click Anywhere to Start",
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    modifier = Modifier
+                        .padding(top = 550.dp)
+                        .scale(flash)
+                )
+            }
+        } else {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .clickable(onClick = { mainButtonSound(context); onClick() })
+            ) {
+                if (hiddenMenu) {
+                    Image(
+                        painter = painterResource(id = R.drawable.pokemon),
+                        contentDescription = "",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .padding(horizontal = 300.dp)
+
+                    )
+                }
+
+
+                AnimatedVisibility(hiddenMenuTwo) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ultimate),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .padding(horizontal = 50.dp)
+                            .padding(bottom = 50.dp)
+                    )
+                }
+            }
+
+
+            AnimatedVisibility (hiddenMenuTwo) {
+                Image(
+                    painter = painterResource(id = R.drawable.pokemon_ball),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .padding(horizontal = 430.dp)
+                        .padding(top = 36.dp)
+                )
+            }
+
+            // Acts as a shadow
+            AnimatedVisibility (hiddenText) {
+                Text(
+                    text = "Click Anywhere to Start",
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(top = 250.dp)
+                        .offset(
+                            x = 2.dp,
+                            y = 2.dp
+                        )
+                        .scale(flash)
+                )
+            }
+
+            AnimatedVisibility (hiddenText) {
+                Text(
+                    text = "Click Anywhere to Start",
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    modifier = Modifier
+                        .padding(top = 250.dp)
+                        .scale(flash)
+                )
+            }
         }
     }
 
-    AnimatedVisibility (hiddenMenuTwo) {
-        Image(
-            painter = painterResource(id = R.drawable.ultimate),
-            contentDescription = "",
-            modifier = Modifier
-                .padding(horizontal = 90.dp)
-                .padding(bottom = 150.dp)
-        )
-    }
-
-    AnimatedVisibility (hiddenMenuTwo) {
-        Image(
-            painter = painterResource(id = R.drawable.pokemon_ball),
-            contentDescription = "",
-            modifier = Modifier
-                .padding(horizontal = 180.dp)
-                .padding(bottom = 250.dp)
-        )
-    }
-
-    // Acts as a shadow
-    AnimatedVisibility (hiddenText) {
-        Text(
-            text = "Click Anywhere to Start",
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Black,
-            modifier = Modifier
-                .padding(top = 550.dp)
-                .offset(
-                    x = 2.dp,
-                    y = 2.dp
-                )
-                .scale(flash)
-        )
-    }
-
-    AnimatedVisibility (hiddenText) {
-        Text(
-            text = "Click Anywhere to Start",
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            color = Color.White,
-            modifier = Modifier
-                .padding(top = 550.dp)
-                .scale(flash)
-        )
-    }
 }

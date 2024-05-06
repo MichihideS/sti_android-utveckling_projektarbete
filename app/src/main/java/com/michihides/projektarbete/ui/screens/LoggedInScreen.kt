@@ -1,7 +1,13 @@
 package com.michihides.projektarbete.ui.screens
 
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.michihides.projektarbete.R
 import com.michihides.projektarbete.destinations.ChoosePokemonScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
@@ -22,6 +28,8 @@ fun LoggedInScreen(
     level: Int,
     navigator: DestinationsNavigator
 ) {
+    var hideUi by rememberSaveable { mutableStateOf(false) }
+
     MainMenuButtonColumn {
         MainMenuButton(buttonText = stringResource(id = R.string.play)) {
             navigator.navigate(
@@ -47,8 +55,18 @@ fun LoggedInScreen(
     }
 
     TitleTextNormal(title = "Elite Trainer $username")
-    
-    MainTextNormal(text = "You are now level: $level \nWhat do you wanna do today?")
 
-    MiniPokemonBall()
+    if (!hideUi) {
+        MainTextNormal(text = "You are now level: $level \nWhat do you wanna do today?")
+
+        MiniPokemonBall()
+    }
+
+    BoxWithConstraints {
+        if (maxWidth > 500.dp) {
+            hideUi = true
+        } else {
+            hideUi = false
+        }
+    }
 }

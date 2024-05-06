@@ -1,6 +1,7 @@
 package com.michihides.projektarbete.ui.screens
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -31,6 +33,7 @@ fun ChangePasswordScreen(
     level: Int,
     navigator: DestinationsNavigator
 ) {
+    var hideUi by rememberSaveable { mutableStateOf(false) }
 
     // Firebase
     val db = FirebaseDatabase
@@ -90,8 +93,18 @@ fun ChangePasswordScreen(
     }
     
     TitleTextNormal(title = stringResource(id = R.string.change_password))
-    
-    MainTextNormal(text = stringResource(id = R.string.new_password))
+
+    if (!hideUi) {
+        MainTextNormal(text = stringResource(id = R.string.new_password))
+    }
+
+    BoxWithConstraints {
+        if (maxWidth > 500.dp) {
+            hideUi = true
+        } else {
+            hideUi = false
+        }
+    }
 
     ChangePassword(
         user = user,

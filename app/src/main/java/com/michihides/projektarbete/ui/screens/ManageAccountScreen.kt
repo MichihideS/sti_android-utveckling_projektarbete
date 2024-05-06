@@ -1,5 +1,6 @@
 package com.michihides.projektarbete.ui.screens
 
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -10,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -38,6 +40,8 @@ fun ManageAccountScreen(
     level: Int,
     navigator: DestinationsNavigator
 ) {
+    var hideUi by rememberSaveable { mutableStateOf(false) }
+
     // Firebase
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -122,6 +126,16 @@ fun ManageAccountScreen(
     }
     
     TitleTextNormal(title = stringResource(id = R.string.manage_account_title))
-    
-    MainTextNormal(text = stringResource(id = R.string.manage_account_text))
+
+    if (!hideUi) {
+        MainTextNormal(text = stringResource(id = R.string.manage_account_text))
+    }
+
+    BoxWithConstraints {
+        if (maxWidth > 500.dp) {
+            hideUi = true
+        } else {
+            hideUi = false
+        }
+    }
 }

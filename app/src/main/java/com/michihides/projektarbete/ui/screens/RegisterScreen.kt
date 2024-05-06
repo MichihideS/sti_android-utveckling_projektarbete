@@ -1,6 +1,7 @@
 package com.michihides.projektarbete.ui.screens
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,6 +30,8 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun RegisterScreen(
     navigator: DestinationsNavigator
 ) {
+    var hideUi by rememberSaveable { mutableStateOf(false) }
+
     // Firebase
     val db = FirebaseDatabase
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -55,7 +59,6 @@ fun RegisterScreen(
     val userDatabase = db.child("").child(user.username)
 
     MainMenuButtonColumn {
-
         /* Reads a snapshot from the database and if the user field isn't empty or doesn't
         ** exist it will register the newly entered user
         */
@@ -88,9 +91,19 @@ fun RegisterScreen(
         title = stringResource(id = R.string.register)
     )
 
-    MainTextNormal(
-        text = stringResource(id = R.string.register_long)
-    )
+    if (!hideUi) {
+        MainTextNormal(
+            text = stringResource(id = R.string.register_long)
+        )
+    }
+
+    BoxWithConstraints {
+        if (maxWidth > 500.dp) {
+            hideUi = true
+        } else {
+            hideUi = false
+        }
+    }
 
     UserHandler(
         user = user,

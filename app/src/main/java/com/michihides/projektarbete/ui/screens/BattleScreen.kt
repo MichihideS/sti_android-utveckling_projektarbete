@@ -106,6 +106,7 @@ fun BattleScreen(
     // Boolean that stops the music from playing if set to true and after button press
     var silenceMusic by rememberSaveable { mutableStateOf(false) }
 
+    // Boolean that sets the enemy health 1 time
     var setEnemyHealth by rememberSaveable { mutableStateOf(true) }
 
     // Sets the enemy health depending on which enemy it is
@@ -148,6 +149,13 @@ fun BattleScreen(
 
     val sound by remember {
         mutableStateOf(MediaPlayer.create(context, R.raw.battle_music))
+    }
+
+    // Releases the sound when switching composable
+    DisposableEffect(Unit) {
+        onDispose {
+            sound.release()
+        }
     }
 
     LaunchedEffect(Unit) {
