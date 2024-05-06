@@ -20,6 +20,7 @@ import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BackGroundBattle
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
+import com.michihides.projektarbete.ui.composables.ElementCircleSmall
 import com.michihides.projektarbete.ui.composables.EnemyAttack
 import com.michihides.projektarbete.ui.composables.EnemyChallenge
 import com.michihides.projektarbete.ui.composables.EnemyPokemonColumn
@@ -109,6 +110,9 @@ fun LevelThreeScreen(
     // Enemy health bar and your health bar
     HealthBarEnemy(healthEnemy = healthEnemy)
     HealthBar(health = health)
+
+    // Small Element Circle that helps you with attacks
+    ElementCircleSmall()
 
     // Pretext that shows who you are facing
     EnemyChallenge(enemy = enemy)
