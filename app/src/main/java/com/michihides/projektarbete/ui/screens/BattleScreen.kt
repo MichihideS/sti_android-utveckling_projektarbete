@@ -31,6 +31,12 @@ import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
 import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.michihides.projektarbete.ui.composables.WinnerOptions
 import com.michihides.projektarbete.ui.composables.choosePokemonHandler
+import com.michihides.projektarbete.ui.composables.levelOneBattleAlly
+import com.michihides.projektarbete.ui.composables.levelOneBattleEnemyAttack
+import com.michihides.projektarbete.ui.composables.levelOneBattleEnemyPower
+import com.michihides.projektarbete.ui.composables.levelThreeBattleAlly
+import com.michihides.projektarbete.ui.composables.levelThreeBattleEnemyAttack
+import com.michihides.projektarbete.ui.composables.levelThreeBattleEnemyPower
 import com.michihides.projektarbete.ui.composables.levelTwoBattleAlly
 import com.michihides.projektarbete.ui.composables.levelTwoBattleEnemyAttack
 import com.michihides.projektarbete.ui.composables.levelTwoBattleEnemyPower
@@ -43,13 +49,21 @@ import kotlinx.coroutines.delay
 
 @Destination
 @Composable
-fun LevelTwoScreen(
+fun BattleScreen(
     username: String,
     password: String,
     level: Int,
     pokemonChoice: String,
     navigator: DestinationsNavigator
 ) {
+    var enemy  = ""
+
+    // Checks which level you are and assign you the right battle
+    when (level) {
+        1 -> enemy = "Charizard"
+        2 -> enemy = "Dragonite"
+        3 -> enemy = "Articuno"
+    }
     // Sets a background
     BackGroundBattle()
 
@@ -58,7 +72,7 @@ fun LevelTwoScreen(
 
     // Fetches Charizard from the API with name, sound and sprite
     EnemyPokemonColumn {
-        PokemonEnemyDataUI(pokemonName = "dragonite")
+        PokemonEnemyDataUI(pokemonName = enemy.lowercase())
     }
 
     // Fetches the pokemon you choose with sprite
@@ -66,9 +80,8 @@ fun LevelTwoScreen(
         PokemonAllyDataUI(pokemonName = pokemonChoice)
     }
 
-    val enemy  = "Dragonite"
     var health by rememberSaveable { mutableIntStateOf((360)) }
-    var healthEnemy by rememberSaveable { mutableIntStateOf((420)) }
+    var healthEnemy by rememberSaveable { mutableIntStateOf((0)) }
     var allyAttack by rememberSaveable { mutableStateOf("") }
     var allyAttackPower by rememberSaveable { mutableIntStateOf(0) }
 
@@ -93,6 +106,17 @@ fun LevelTwoScreen(
     // Boolean that stops the music from playing if set to true and after button press
     var silenceMusic by rememberSaveable { mutableStateOf(false) }
 
+    var setEnemyHealth by rememberSaveable { mutableStateOf(true) }
+
+    // Sets the enemy health depending on which enemy it is
+    if (setEnemyHealth) {
+        when (enemy) {
+            "Charizard" -> healthEnemy = 380
+            "Dragonite" -> healthEnemy = 420
+            "Articuno" -> healthEnemy = 520
+        }
+    }
+
 
     // Sets your pokemons element
     when (pokemonChoice) {
@@ -113,7 +137,7 @@ fun LevelTwoScreen(
 
     // Small Element Circle that helps you with attacks
     ElementCircleSmall()
-    
+
     // Pretext that shows who you are facing
     EnemyChallenge(enemy = enemy)
 
@@ -157,7 +181,13 @@ fun LevelTwoScreen(
                     allyAttackElement = pokemonElements.component1()
 
                     // Randomizes the enemy attack
-                    enemyAttack = levelTwoBattleEnemyAttack()
+                    when (level) {
+                        1 -> enemyAttack = levelOneBattleEnemyAttack()
+                        2 -> enemyAttack = levelTwoBattleEnemyAttack()
+                        3 -> enemyAttack = levelThreeBattleEnemyAttack()
+                    }
+
+                    setEnemyHealth = false
                     afterAttacks = true
                     battleMoves = false
                 }
@@ -173,7 +203,13 @@ fun LevelTwoScreen(
                     allyAttackElement = pokemonElements.component2()
 
                     // Randomizes the enemy attack
-                    enemyAttack = levelTwoBattleEnemyAttack()
+                    when (level) {
+                        1 -> enemyAttack = levelOneBattleEnemyAttack()
+                        2 -> enemyAttack = levelTwoBattleEnemyAttack()
+                        3 -> enemyAttack = levelThreeBattleEnemyAttack()
+                    }
+
+                    setEnemyHealth = false
                     afterAttacks = true
                     battleMoves = false
                 }
@@ -190,7 +226,13 @@ fun LevelTwoScreen(
                     allyAttackElement = pokemonElements.component3()
 
                     // Randomizes the enemy attack
-                    enemyAttack = levelTwoBattleEnemyAttack()
+                    when (level) {
+                        1 -> enemyAttack = levelOneBattleEnemyAttack()
+                        2 -> enemyAttack = levelTwoBattleEnemyAttack()
+                        3 -> enemyAttack = levelThreeBattleEnemyAttack()
+                    }
+
+                    setEnemyHealth = false
                     afterAttacks = true
                     battleMoves = false
                 }
@@ -206,7 +248,13 @@ fun LevelTwoScreen(
                     allyAttackElement = pokemonElements.component4()
 
                     // Randomizes the enemy attack
-                    enemyAttack = levelTwoBattleEnemyAttack()
+                    when (level) {
+                        1 -> enemyAttack = levelOneBattleEnemyAttack()
+                        2 -> enemyAttack = levelTwoBattleEnemyAttack()
+                        3 -> enemyAttack = levelThreeBattleEnemyAttack()
+                    }
+
+                    setEnemyHealth = false
                     afterAttacks = true
                     battleMoves = false
                 }
@@ -220,10 +268,20 @@ fun LevelTwoScreen(
 
         LaunchedEffect(Unit) {
             delay(1000)
-            healthEnemy -= levelTwoBattleAlly(
-                pokemonElements = allyAttackElement,
-                pokemonAttackStrength = allyAttackPower
-            )
+            when (level) {
+                1 -> healthEnemy -= levelOneBattleAlly(
+                        pokemonElements = allyAttackElement,
+                        pokemonAttackStrength = allyAttackPower
+                    )
+                2 -> healthEnemy -= levelTwoBattleAlly(
+                    pokemonElements = allyAttackElement,
+                    pokemonAttackStrength = allyAttackPower
+                )
+                3 -> healthEnemy -= levelThreeBattleAlly(
+                    pokemonElements = allyAttackElement,
+                    pokemonAttackStrength = allyAttackPower
+                )
+            }
 
             delay(1200)
             afterEnemyAttacks = true
@@ -237,7 +295,11 @@ fun LevelTwoScreen(
     AnimatedVisibility (afterEnemyAttacks && healthEnemy > 1) {
         afterAttacks = false
 
-        enemyAttackPower = levelTwoBattleEnemyPower(allyElement, enemyAttack)
+        when (level) {
+            1 -> enemyAttackPower = levelOneBattleEnemyPower(allyElement, enemyAttack)
+            2 -> enemyAttackPower = levelTwoBattleEnemyPower(allyElement, enemyAttack)
+            3 -> enemyAttackPower = levelThreeBattleEnemyPower(allyElement, enemyAttack)
+        }
 
         EnemyAttack(enemy = enemy, attack = enemyAttack)
 

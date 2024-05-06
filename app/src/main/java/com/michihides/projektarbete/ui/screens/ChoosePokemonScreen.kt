@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.michihides.projektarbete.R
+import com.michihides.projektarbete.destinations.BattleScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
 import com.michihides.projektarbete.ui.composables.GameFinished
@@ -21,7 +22,6 @@ import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
-import com.michihides.projektarbete.ui.composables.choosePokemon
 import com.michihides.projektarbete.ui.theme.GeneralBackground
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -58,13 +58,14 @@ fun ChoosePokemonScreen(
                     ChoosePokemonButton(buttonText = "Pikachu") {
                         pokemonChoice = "pikachu"
 
-                        choosePokemon(
-                            username,
-                            password,
-                            level,
-                            navigator,
-                            pokemonChoice
-                        )
+                        if (level < 4) {
+                            navigator.navigate(BattleScreenDestination(
+                                    username,
+                                    password,
+                                    level,
+                                    pokemonChoice
+                            ))
+                        }
                     }
 
 
@@ -76,13 +77,14 @@ fun ChoosePokemonScreen(
                             ChoosePokemonButton(buttonText = "Dragonair") {
                                 pokemonChoice = "dragonair"
 
-                                choosePokemon(
-                                    username,
-                                    password,
-                                    level,
-                                    navigator,
-                                    pokemonChoice
-                                )
+                                if (level < 4) {
+                                    navigator.navigate(BattleScreenDestination(
+                                            username,
+                                            password,
+                                            level,
+                                            pokemonChoice
+                                    ))
+                                }
                             }
                         }
 
@@ -93,13 +95,14 @@ fun ChoosePokemonScreen(
                             ChoosePokemonButton(buttonText = "Jigglypuff") {
                                 pokemonChoice = "jigglypuff"
 
-                                choosePokemon(
-                                    username,
-                                    password,
-                                    level,
-                                    navigator,
-                                    pokemonChoice
-                                )
+                                if (level < 4) {
+                                    navigator.navigate(BattleScreenDestination(
+                                            username,
+                                            password,
+                                            level,
+                                            pokemonChoice
+                                    ))
+                                }
                             }
                         }
                     }
