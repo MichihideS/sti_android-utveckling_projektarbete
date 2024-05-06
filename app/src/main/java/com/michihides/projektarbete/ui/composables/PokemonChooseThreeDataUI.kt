@@ -17,6 +17,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.michihides.projektarbete.ui.viewModels.PokemonChooseViewModel
 
+/* Fetches the Pokemon Data from the API and places it in a viewModel
+** This only fetches the front Sprite for the ally pokemon
+ */
 @Composable
 fun PokemonChooseThreeDataUI(
     pokemonName: String,
@@ -29,6 +32,7 @@ fun PokemonChooseThreeDataUI(
         viewModel.fetchPokemonData(pokemonName)
     }
 
+    // Sets pokemon as a asyncImage and increases it size as long as pokemon isn't null
     if (pokemon != null) {
         AsyncImage(
             model = pokemon?.sprites?.frontSprite,

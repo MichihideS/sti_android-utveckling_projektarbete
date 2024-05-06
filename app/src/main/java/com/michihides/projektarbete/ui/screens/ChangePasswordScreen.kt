@@ -15,7 +15,6 @@ import com.google.firebase.database.ValueEventListener
 import com.michihides.projektarbete.destinations.ManageAccountScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.ChangePassword
-import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination
@@ -45,14 +44,19 @@ fun ChangePasswordScreen(
     val toastEmptyField = Toast.makeText(context, "Please Enter a Password", Toast.LENGTH_SHORT)
     val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
 
+    // Sets the user with the username, password and level through navigation
     var user by rememberSaveable {
         mutableStateOf(
             User(username, password, level)
         )
     }
 
+    // Identifies the user from the database with the username
     val userDatabase = db.child("").child(user.username)
 
+    /* Reads a snapshot from the database and updates it's value with the input
+    ** as long as the field isn't empty
+     */
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Change Password") {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {

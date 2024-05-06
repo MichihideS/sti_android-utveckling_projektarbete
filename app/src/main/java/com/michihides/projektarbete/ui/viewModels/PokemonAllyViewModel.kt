@@ -8,6 +8,7 @@ import com.michihides.projektarbete.api.PokemonRetrofit
 import com.michihides.projektarbete.api.Pokemon
 import kotlinx.coroutines.launch
 
+// ViewModel for the ally pokemons
 class PokemonAllyViewModel: ViewModel() {
     private val _pokemonUiState = mutableStateOf<Pokemon?>(null)
     var pokemonUiState: State<Pokemon?> = _pokemonUiState

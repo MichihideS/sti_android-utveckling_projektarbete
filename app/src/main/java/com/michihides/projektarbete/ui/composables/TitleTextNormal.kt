@@ -8,6 +8,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// Text for the general text on the screens
 @Composable
 fun TitleTextNormal(
     title: String

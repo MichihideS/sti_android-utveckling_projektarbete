@@ -33,6 +33,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.logging.Handler
 
+// Shows what attack the enemy used and disappears after 2000ms
 @Composable
 fun EnemyAttack(
     enemy: String,

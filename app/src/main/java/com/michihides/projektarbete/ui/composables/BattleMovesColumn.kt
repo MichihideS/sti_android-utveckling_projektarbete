@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.michihides.projektarbete.ui.theme.GeneralBackground
 
+// Column for the BattleMovesButton
 @Composable
 fun BattleMovesColumn(
     content: @Composable ColumnScope.() -> Unit

@@ -1,5 +1,6 @@
 package com.michihides.projektarbete.ui.composables
 
+// Checks which attack the enemy uses
 fun levelThreeBattleEnemyAttack():String {
     // Randoms between attack 1-4
     val randomAttack = (1..4).shuffled().first()

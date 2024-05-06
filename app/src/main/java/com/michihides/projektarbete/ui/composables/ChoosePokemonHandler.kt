@@ -6,8 +6,11 @@ import androidx.compose.ui.graphics.Color
 import com.michihides.projektarbete.models.Dragonair
 import com.michihides.projektarbete.models.Jigglypuff
 
+/* Returns and sets the correct pokemon depending on what you choose with
+** the help of Dragonair, Jigglypuff and Pikachu models
+ */
 @Composable
-fun ChoosePokemonHandler(
+fun choosePokemonHandler(
     pokemonChoice: String
 ): Triple<List<String>, List<Color>, List<Int>> {
     val pokemonAttacks: MutableList<String> = mutableListOf()

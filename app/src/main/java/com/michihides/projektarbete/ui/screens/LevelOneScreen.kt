@@ -16,7 +16,6 @@ import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BackGroundBattle
 import com.michihides.projektarbete.ui.composables.BattleMovesButton
 import com.michihides.projektarbete.ui.composables.BattleMovesColumn
-import com.michihides.projektarbete.ui.composables.ChoosePokemonHandler
 import com.michihides.projektarbete.ui.composables.EnemyAttack
 import com.michihides.projektarbete.ui.composables.EnemyChallenge
 import com.michihides.projektarbete.ui.composables.EnemyPokemonColumn
@@ -26,6 +25,7 @@ import com.michihides.projektarbete.ui.composables.LoserOptions
 import com.michihides.projektarbete.ui.composables.PokemonAllyDataUI
 import com.michihides.projektarbete.ui.composables.PokemonEnemyDataUI
 import com.michihides.projektarbete.ui.composables.WinnerOptions
+import com.michihides.projektarbete.ui.composables.choosePokemonHandler
 import com.michihides.projektarbete.ui.composables.levelOneBattleAlly
 import com.michihides.projektarbete.ui.composables.levelOneBattleEnemyAttack
 import com.michihides.projektarbete.ui.composables.levelOneBattleEnemyPower
@@ -49,7 +49,7 @@ fun LevelOneScreen(
     BackGroundBattle()
 
     // Sets the pokemon you choose with the right attacks, elements and power
-    val (pokemonAttacks, pokemonElements, pokemonAttackStrength) = ChoosePokemonHandler(pokemonChoice)
+    val (pokemonAttacks, pokemonElements, pokemonAttackStrength) = choosePokemonHandler(pokemonChoice)
 
     // Fetches Charizard from the API with name, sound and sprite
     EnemyPokemonColumn {

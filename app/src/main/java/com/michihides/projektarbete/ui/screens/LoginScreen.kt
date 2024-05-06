@@ -15,7 +15,6 @@ import com.google.firebase.database.ValueEventListener
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
-import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.michihides.projektarbete.ui.composables.UserHandler
@@ -42,14 +41,21 @@ fun LoginScreen(
     val toastWrong = Toast.makeText(context, "Wrong Username or Password, try again!", Toast.LENGTH_SHORT)
     val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
 
+    // Initializing the user
     var user by rememberSaveable {
         mutableStateOf(
             User("", "", 1)
         )
     }
 
+    // Identifies the user from the database with the username
     val userDatabase = db.child("").child(user.username)
 
+    /* Reads a snapshot from the database and checks if the username matches the username input
+    ** field. After, it reads again to see if the password field matches the database snapshot and
+    ** if that matches too it gets the level value as well to see what level the user was on before.
+    ** And after that, navigates with all the parameters
+    */
     MainMenuButtonColumn {
         MainMenuButton(buttonText = "Login") {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {

@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 import com.michihides.projektarbete.ui.theme.Water
 import com.michihides.projektarbete.ui.theme.Wind
 
+// Calculates how much health the ally loses depending on what element and power the enemy use
 fun levelOneBattleEnemyPower(
     allyElement: Color,
     enemyAttack: String,

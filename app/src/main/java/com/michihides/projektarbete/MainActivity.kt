@@ -22,9 +22,6 @@ import com.michihides.projektarbete.destinations.AboutScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.ui.composables.HomeScreenAudio
 import com.michihides.projektarbete.ui.composables.HomeScreenColumn
-import com.michihides.projektarbete.ui.composables.MainButtonSound
-import com.michihides.projektarbete.ui.composables.MainMenuButton
-import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.michihides.projektarbete.ui.theme.ProjektarbeteTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
@@ -49,6 +46,11 @@ class MainActivity : ComponentActivity() {
                     DestinationsNavHost(
                         navGraph = NavGraphs.root
                     )
+
+                    /* MUSIC USED FROM
+                    ** https://youtu.be/KKhEwcWMH9M?si=FPB0mD9kzBcwkmGR
+                    ** https://mixkit.co/free-sound-effects/click/
+                     */
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.michihides.projektarbete.ui.composables
 
 import androidx.annotation.ColorInt
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,8 +22,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.michihides.projektarbete.R
+import com.michihides.projektarbete.ui.theme.WhiteTransparent
+import com.michihides.projektarbete.ui.theme.WhiteTransparentTwo
 
-// A reusable button for the moves in the pokemon battles
+// A reusable button for the moves in the pokemon battles with sound onClick
 @Composable
 fun BattleMovesButton(
     buttonTextMove: String,
@@ -35,14 +38,15 @@ fun BattleMovesButton(
     */
     val context = LocalContext.current
 
-    Button(onClick = { MainButtonSound(context) ; onClick() },
+    Button(onClick = { mainButtonSound(context) ; onClick() },
         colors = ButtonDefaults.buttonColors(buttonColor),
         modifier = Modifier
             .offset(y = (-30).dp)
             .padding(12.dp)
             .width(180.dp)
             .height(60.dp),
-        shape = RoundedCornerShape(5.dp)
+        shape = RoundedCornerShape(5.dp),
+        border = BorderStroke(2.dp, WhiteTransparentTwo)
     ){
         Column(
             verticalArrangement = Arrangement.Center,

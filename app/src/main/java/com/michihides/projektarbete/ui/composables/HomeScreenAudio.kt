@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.michihides.projektarbete.R
 
+// Plays a music file on the HomeScreen and releases as soon as you click
 @Composable
 fun HomeScreenAudio() {
     /* Need to use context when using a composable function

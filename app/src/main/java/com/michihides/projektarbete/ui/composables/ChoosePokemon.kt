@@ -5,7 +5,8 @@ import com.michihides.projektarbete.destinations.LevelThreeScreenDestination
 import com.michihides.projektarbete.destinations.LevelTwoScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-fun ChoosePokemon(
+// Depending on which level you are navigates you to the right battle
+fun choosePokemon(
     username: String,
     password: String,
     level: Int,

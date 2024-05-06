@@ -8,6 +8,7 @@ import com.michihides.projektarbete.api.PokemonRetrofit
 import com.michihides.projektarbete.api.Pokemon
 import kotlinx.coroutines.launch
 
+// ViewModel for the enemy pokemons
 class PokemonEnemyViewModel: ViewModel() {
     private val _pokemonUiState = mutableStateOf<Pokemon?>(null)
     var pokemonUiState: State<Pokemon?> = _pokemonUiState

@@ -31,6 +31,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.logging.Handler
 
+/* Text that pops up before you enter a battle with which pokemon challenges you
+** and disappears after 3000ms
+ */
 @Composable
 fun EnemyChallenge(
     enemy: String

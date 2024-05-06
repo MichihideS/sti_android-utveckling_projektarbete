@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.michihides.projektarbete.R
 import com.michihides.projektarbete.ui.theme.BlackTransparent
 
+// Background for the battles aka LevelOneScreen, LevelTwoScreen, LevelThreeScreen
 @Composable
 fun BackGroundBattle(){
     Column(modifier = Modifier.background(BlackTransparent)) {}

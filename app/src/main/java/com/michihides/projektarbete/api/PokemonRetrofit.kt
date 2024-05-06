@@ -14,6 +14,7 @@ import kotlin.coroutines.suspendCoroutine
 object PokemonRetrofit {
     private const val BASE_URL = "https://pokeapi.co/api/v2/"
 
+    // Retrofit that converts the JSON with Gson
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -21,6 +22,9 @@ object PokemonRetrofit {
             .build()
     }
 
+    /* Fetches from the Pokemon API and get the full data back in form of a body
+    ** If not successful will give error with the error response
+     */
     suspend fun fetchPokemon(pokemonName: String): Pokemon {
         return suspendCoroutine { continuation ->
             val getPokemonApi = retrofit.create<PokemonApi>().getData(pokemonName)

@@ -44,9 +44,15 @@ fun HomeScreenColumn(
     */
     val context = LocalContext.current
 
-    // Need to use remember since LaunchedEffect is async
+    /* Need to use remember since LaunchedEffect is async
+    ** Boolean that shows the pokemon logo if set to true
+    */
     var hiddenMenu by rememberSaveable { mutableStateOf(false) }
+
+    // Boolean that shows the pokemon ball if set to true
     var hiddenMenuTwo by rememberSaveable { mutableStateOf(false) }
+
+    // Boolean that shows the hidden text if set to true
     var hiddenText by rememberSaveable { mutableStateOf(false) }
 
     // Delays the pokemon image by 1800ms
@@ -86,7 +92,7 @@ fun HomeScreenColumn(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .clickable(onClick = { MainButtonSound(context); onClick() })
+            .clickable(onClick = { mainButtonSound(context); onClick() })
     ) {
         if (hiddenMenu) {
             Image(

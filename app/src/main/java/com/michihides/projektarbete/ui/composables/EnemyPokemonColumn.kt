@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+// Column for where the enemy pokemon is placed
 @Composable
 fun EnemyPokemonColumn(
     content: @Composable ColumnScope.() -> Unit

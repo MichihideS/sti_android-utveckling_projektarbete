@@ -17,7 +17,6 @@ import com.google.firebase.database.ValueEventListener
 import com.michihides.projektarbete.destinations.LoginScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
-import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.michihides.projektarbete.ui.composables.UserHandler
@@ -45,17 +44,21 @@ fun RegisterScreen(
     val toastEmptyField = Toast.makeText(context, "Please Enter a Username", Toast.LENGTH_SHORT)
     val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
 
+    // Initializing the user
     var user by rememberSaveable {
         mutableStateOf(
             User("", "", 1)
         )
     }
 
+    // Identifies the user from the database with the username
     val userDatabase = db.child("").child(user.username)
 
     MainMenuButtonColumn {
 
-        // Listener
+        /* Reads a snapshot from the database and if the user field isn't empty or doesn't
+        ** exist it will register the newly entered user
+        */
         MainMenuButton(buttonText = "Register") {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

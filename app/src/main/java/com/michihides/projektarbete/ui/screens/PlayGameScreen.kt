@@ -9,7 +9,6 @@ import com.michihides.projektarbete.destinations.AboutScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LoginScreenDestination
 import com.michihides.projektarbete.destinations.RegisterScreenDestination
-import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination

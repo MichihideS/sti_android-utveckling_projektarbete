@@ -23,7 +23,6 @@ import com.michihides.projektarbete.destinations.ChangePasswordScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.models.User
-import com.michihides.projektarbete.ui.composables.MainButtonSound
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
 import com.ramcosta.composedestinations.annotation.Destination
@@ -42,12 +41,14 @@ fun ManageAccountScreen(
         .getInstance("https://projektarbete-au-default-rtdb.europe-west1.firebasedatabase.app/")
         .getReference("users")
 
+    // Sets the user with the username, password and level through navigation
     val user by rememberSaveable {
         mutableStateOf(
             User(username, password, level)
         )
     }
 
+    // Identifies the user from the database with the username
     val userDatabase = db.child("").child(user.username)
 
     /* An Alertdialog that will show itself if set to true which happens when you press
@@ -57,6 +58,7 @@ fun ManageAccountScreen(
         mutableStateOf(false)
     }
 
+    // If showDeleteAccount.value is true it will show an alert dialog
     if(showDeleteAccount.value) {
         AlertDialog(
             onDismissRequest = { showDeleteAccount.value = false },
@@ -71,6 +73,10 @@ fun ManageAccountScreen(
                 Button(
                     onClick = {
                         showDeleteAccount.value = false
+
+                        /* Reads a snapshot from the database and if confirm button is clicked
+                        ** will delete the user from the database and return the user to HomeScreen
+                        */
                         userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 userDatabase.removeValue(user)
@@ -99,6 +105,7 @@ fun ManageAccountScreen(
             ))
         }
 
+        // Pops up the alert dialog
         MainMenuButton(buttonText = "Delete Account") {
             showDeleteAccount.value = true
         }
