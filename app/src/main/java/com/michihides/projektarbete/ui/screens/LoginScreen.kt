@@ -7,15 +7,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.michihides.projektarbete.R
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
+import com.michihides.projektarbete.ui.composables.MainTextNormal
+import com.michihides.projektarbete.ui.composables.TitleTextNormal
 import com.michihides.projektarbete.ui.composables.UserHandler
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -36,9 +40,9 @@ fun LoginScreen(
     val context = LocalContext.current
 
     // Toasts, should use context for Composable function
-    val toastEmptyField = Toast.makeText(context, "Please Enter a Username", Toast.LENGTH_SHORT)
-    val toastWrong = Toast.makeText(context, "Wrong Username or Password, try again!", Toast.LENGTH_SHORT)
-    val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
+    val toastEmptyField = Toast.makeText(context, stringResource(id = R.string.please_username), Toast.LENGTH_SHORT)
+    val toastWrong = Toast.makeText(context, stringResource(id = R.string.wrong_username_password), Toast.LENGTH_SHORT)
+    val toastError = Toast.makeText(context, stringResource(id = R.string.error_try_again), Toast.LENGTH_SHORT)
 
     // Initializing the user
     var user by rememberSaveable {
@@ -56,7 +60,7 @@ fun LoginScreen(
     ** And after that, navigates with all the parameters
     */
     MainMenuButtonColumn {
-        MainMenuButton(buttonText = "Login") {
+        MainMenuButton(buttonText = stringResource(id = R.string.login)) {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (user.username == "") {
@@ -84,10 +88,18 @@ fun LoginScreen(
             })
         }
 
-        MainMenuButton(buttonText = "Back") {
+        MainMenuButton(buttonText = stringResource(id = R.string.back)) {
             navigator.navigate(PlayGameScreenDestination)
         }
     }
+
+    TitleTextNormal(
+        title = stringResource(id = R.string.login)
+    )
+
+    MainTextNormal(
+        text = stringResource(id = R.string.login_long)
+    )
 
     UserHandler(
         user = user,

@@ -7,15 +7,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.michihides.projektarbete.R
 import com.michihides.projektarbete.destinations.ManageAccountScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.ChangePassword
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
+import com.michihides.projektarbete.ui.composables.MainTextNormal
+import com.michihides.projektarbete.ui.composables.TitleTextNormal
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -39,9 +43,9 @@ fun ChangePasswordScreen(
     val context = LocalContext.current
 
     // Toasts, should use context for Composable function
-    val toastPasswordUpdate = Toast.makeText(context, "Password Updated", Toast.LENGTH_SHORT)
-    val toastEmptyField = Toast.makeText(context, "Please Enter a Password", Toast.LENGTH_SHORT)
-    val toastError = Toast.makeText(context, "Error, try again!", Toast.LENGTH_SHORT)
+    val toastPasswordUpdate = Toast.makeText(context, stringResource(id = R.string.password_updated), Toast.LENGTH_SHORT)
+    val toastEmptyField = Toast.makeText(context, stringResource(id = R.string.enter_password), Toast.LENGTH_SHORT)
+    val toastError = Toast.makeText(context, stringResource(id = R.string.error_try_again), Toast.LENGTH_SHORT)
 
     // Sets the user with the username, password and level through navigation
     var user by rememberSaveable {
@@ -57,7 +61,7 @@ fun ChangePasswordScreen(
     ** as long as the field isn't empty
      */
     MainMenuButtonColumn {
-        MainMenuButton(buttonText = "Change Password") {
+        MainMenuButton(buttonText = stringResource(id = R.string.change_password)) {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (user.password == "") {
@@ -74,7 +78,7 @@ fun ChangePasswordScreen(
             })
         }
 
-        MainMenuButton(buttonText = "Back") {
+        MainMenuButton(buttonText = stringResource(id = R.string.back)) {
             navigator.navigate(
                 ManageAccountScreenDestination(
                 username,
@@ -84,6 +88,10 @@ fun ChangePasswordScreen(
             ))
         }
     }
+    
+    TitleTextNormal(title = stringResource(id = R.string.change_password))
+    
+    MainTextNormal(text = stringResource(id = R.string.new_password))
 
     ChangePassword(
         user = user,

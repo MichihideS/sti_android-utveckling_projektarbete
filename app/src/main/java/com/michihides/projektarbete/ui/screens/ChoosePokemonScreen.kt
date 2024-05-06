@@ -11,6 +11,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.michihides.projektarbete.R
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
 import com.michihides.projektarbete.ui.composables.GameFinished
@@ -43,7 +45,7 @@ fun ChoosePokemonScreen(
         modifier = Modifier
             .background(GeneralBackground)
     ) {
-        TitleTextNormal(title = "Choose your Pokemon")
+        TitleTextNormal(title = stringResource(id = R.string.choose_pokemon))
 
         if (!gameFinished) {
             Row(
@@ -103,7 +105,7 @@ fun ChoosePokemonScreen(
                     }
                 }
 
-                MainMenuButton(buttonText = "Back") {
+                MainMenuButton(buttonText = stringResource(id = R.string.back)) {
                     navigator.navigate(
                         LoggedInScreenDestination(
                             username,

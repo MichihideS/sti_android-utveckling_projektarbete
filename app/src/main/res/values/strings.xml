@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">projektarbete</string>
+    <string name="register">Register</string>
+    <string name="register_long">Please enter your desired Username and Password</string>
+    <string name="back">Back</string>
+    <string name="welcome_title">Welcome Trainer</string>
+    <string name="welcome_text">Welcome to the world of ULTIMATE Pokemon. Enjoy your stay</string>
+    <string name="about">About</string>
+    <string name="login">Login</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="delete_account_sure">Are you sure you want to delete your account?</string>
+    <string name="yes">Yes</string>
+    <string name="change_password">Change Password</string>
+    <string name="login_long">Please enter your Username and Password</string>
+    <string name="please_username">Please Enter a Username</string>
+    <string name="error_try_again">Error, try again!</string>
+    <string name="wrong_username_password">Wrong Username or Password, try again!</string>
+    <string name="user_created">User Created</string>
+    <string name="user_exists">User Already Exists</string>
+    <string name="play">Play</string>
+    <string name="manage_account">Manage Account</string>
+    <string name="logout">Logout</string>
+    <string name="choose_pokemon">Choose your Pokemon</string>
+    <string name="password_updated">Password Updated</string>
+    <string name="enter_password">Please Enter a Password</string>
+    <string name="manage_account_title">Update Yourself</string>
+    <string name="manage_account_text">Here you can update on information or in worst
+    case, delete it</string>
+    <string name="new_password">Enter your new Password</string>
 </resources>

@@ -123,7 +123,7 @@ fun LevelTwoScreen(
     }
 
     LaunchedEffect(Unit) {
-        delay(700)
+        delay(850)
         // Lowers the volume of the music
         sound.setVolume(0.5f, 0.5f)
         sound.start()

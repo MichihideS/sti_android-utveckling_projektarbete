@@ -11,18 +11,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.michihides.projektarbete.R
 import com.michihides.projektarbete.destinations.ChangePasswordScreenDestination
 import com.michihides.projektarbete.destinations.HomeScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.MainMenuButton
 import com.michihides.projektarbete.ui.composables.MainMenuButtonColumn
+import com.michihides.projektarbete.ui.composables.MainTextNormal
+import com.michihides.projektarbete.ui.composables.TitleTextNormal
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -60,9 +64,9 @@ fun ManageAccountScreen(
     if(showDeleteAccount.value) {
         AlertDialog(
             onDismissRequest = { showDeleteAccount.value = false },
-            title = { Text(text = "Delete Account")},
+            title = { Text(text = stringResource(id = R.string.delete_account))},
             text = { Text(
-                text = "Are you sure you want to delete your account?",
+                text = stringResource(id = R.string.delete_account_sure),
                 fontSize = 16.sp
             )},
             shape = RoundedCornerShape(5.dp),
@@ -88,14 +92,14 @@ fun ManageAccountScreen(
                     colors = ButtonDefaults.buttonColors(Color.Blue),
                     shape = RoundedCornerShape(5.dp)
                 ) {
-                    Text(text = "Yes")
+                    Text(text = stringResource(id = R.string.yes))
                 }
             }
         )
     }
 
     MainMenuButtonColumn {
-        MainMenuButton(buttonText = "Change Password") {
+        MainMenuButton(buttonText = stringResource(id = R.string.change_password)) {
             navigator.navigate(ChangePasswordScreenDestination(
                 username,
                 password,
@@ -104,11 +108,11 @@ fun ManageAccountScreen(
         }
 
         // Pops up the alert dialog
-        MainMenuButton(buttonText = "Delete Account") {
+        MainMenuButton(buttonText = stringResource(id = R.string.delete_account)) {
             showDeleteAccount.value = true
         }
 
-        MainMenuButton(buttonText = "Back") {
+        MainMenuButton(buttonText = stringResource(id = R.string.back)) {
             navigator.navigate(LoggedInScreenDestination(
                 username,
                 password,
@@ -116,4 +120,8 @@ fun ManageAccountScreen(
             ))
         }
     }
+    
+    TitleTextNormal(title = stringResource(id = R.string.manage_account_title))
+    
+    MainTextNormal(text = stringResource(id = R.string.manage_account_text))
 }
