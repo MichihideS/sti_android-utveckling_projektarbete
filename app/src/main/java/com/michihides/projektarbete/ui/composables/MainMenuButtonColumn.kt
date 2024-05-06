@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.michihides.projektarbete.ui.theme.DarkHomeScreen
 import com.michihides.projektarbete.ui.theme.GeneralBackground
 
 // A reusable Column for the MainMenuButton that places them in the bottom of the screen

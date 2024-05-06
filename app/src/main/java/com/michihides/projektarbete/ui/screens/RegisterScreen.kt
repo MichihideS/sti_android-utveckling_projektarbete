@@ -1,9 +1,6 @@
 package com.michihides.projektarbete.ui.screens
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,7 +11,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.michihides.projektarbete.destinations.LoginScreenDestination
 import com.michihides.projektarbete.destinations.PlayGameScreenDestination
 import com.michihides.projektarbete.models.User
 import com.michihides.projektarbete.ui.composables.MainMenuButton

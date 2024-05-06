@@ -11,13 +11,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import com.michihides.projektarbete.destinations.LevelOneScreenDestination
-import com.michihides.projektarbete.destinations.LevelThreeScreenDestination
-import com.michihides.projektarbete.destinations.LevelTwoScreenDestination
 import com.michihides.projektarbete.destinations.LoggedInScreenDestination
-import com.michihides.projektarbete.ui.composables.BackGroundImage
 import com.michihides.projektarbete.ui.composables.ChoosePokemonButton
 import com.michihides.projektarbete.ui.composables.GameFinished
 import com.michihides.projektarbete.ui.composables.MainMenuButton
@@ -25,10 +19,8 @@ import com.michihides.projektarbete.ui.composables.PokemonChooseOneDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseThreeDataUI
 import com.michihides.projektarbete.ui.composables.PokemonChooseTwoDataUI
 import com.michihides.projektarbete.ui.composables.TitleTextNormal
-import com.michihides.projektarbete.ui.composables.WinnerOptions
 import com.michihides.projektarbete.ui.composables.choosePokemon
 import com.michihides.projektarbete.ui.theme.GeneralBackground
-import com.michihides.projektarbete.ui.theme.Wind
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 

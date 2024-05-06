@@ -1,8 +1,10 @@
 package com.michihides.projektarbete.ui.screens
 
+import android.media.MediaPlayer
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -11,6 +13,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import com.michihides.projektarbete.R
 import com.michihides.projektarbete.ui.composables.AllyAttack
 import com.michihides.projektarbete.ui.composables.AllyPokemonColumn
 import com.michihides.projektarbete.ui.composables.BackGroundBattle
@@ -85,6 +89,9 @@ fun LevelOneScreen(
     // Boolean that shows the enemy attack if set to true
     var afterEnemyAttacks by rememberSaveable { mutableStateOf(false) }
 
+    // Boolean that stops the music from playing if set to true and after button press
+    var silenceMusic by rememberSaveable { mutableStateOf(false) }
+
 
     // Sets your pokemons element
     when (pokemonChoice) {
@@ -105,6 +112,31 @@ fun LevelOneScreen(
 
     // Pretext that shows who you are facing
     EnemyChallenge(enemy = enemy)
+
+    /* Need to use context when using a composable function
+    ** When in fragment or activity you can use this
+    */
+    val context = LocalContext.current
+
+    val sound by remember {
+        mutableStateOf(MediaPlayer.create(context, R.raw.battle_music))
+    }
+
+    LaunchedEffect(Unit) {
+        delay(700)
+        // Lowers the volume of the music
+        sound.setVolume(0.5f, 0.5f)
+        sound.start()
+    }
+
+    if (silenceMusic) {
+        // Releases the sound when switching composable
+        DisposableEffect(Unit) {
+            onDispose {
+                sound.release()
+            }
+        }
+    }
 
     // Battle menu that shows when you can attack the enemy
     AnimatedVisibility(visible = battleMoves) {
@@ -217,6 +249,7 @@ fun LevelOneScreen(
 
     // If enemy health goes to 0 you win and WinnerOptions show
     if (healthEnemy < 1) {
+        silenceMusic = true
         battleMoves = false
         WinnerOptions(
             username,
@@ -228,6 +261,7 @@ fun LevelOneScreen(
 
     // If your health goes to 0 you lose and LoserOptions show
     if (health < 1 && healthEnemy > 1) {
+        silenceMusic = true
         battleMoves = false
         LoserOptions(
             username,

@@ -1,7 +1,6 @@
 package com.michihides.projektarbete.ui.screens
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

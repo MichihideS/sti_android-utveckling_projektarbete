@@ -1,8 +1,6 @@
 package com.michihides.projektarbete.ui.composables
 
-import androidx.annotation.ColorInt
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -21,8 +19,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.michihides.projektarbete.R
-import com.michihides.projektarbete.ui.theme.WhiteTransparent
 import com.michihides.projektarbete.ui.theme.WhiteTransparentTwo
 
 // A reusable button for the moves in the pokemon battles with sound onClick

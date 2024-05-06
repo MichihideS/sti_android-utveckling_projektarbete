@@ -50,6 +50,7 @@ class MainActivity : ComponentActivity() {
                     /* MUSIC USED FROM
                     ** https://youtu.be/KKhEwcWMH9M?si=FPB0mD9kzBcwkmGR
                     ** https://mixkit.co/free-sound-effects/click/
+                    ** https://dl.vgmdownloads.com/soundtracks/pokemon-omega-ruby-and-alpha-sapphire-super-music-complete-nintendo-3ds/jncuuodcoj/6-47%20Battle%21%20%28Steven%29.mp3
                      */
                 }
             }

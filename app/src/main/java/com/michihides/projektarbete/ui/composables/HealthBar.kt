@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.michihides.projektarbete.ui.theme.LightGreen
 import com.michihides.projektarbete.ui.theme.LightRed
-import com.michihides.projektarbete.ui.theme.Wind
 
 // Ally health bar which changes color depending on how much hp you have left
 @Composable
