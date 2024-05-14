@@ -5,7 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import kotlinx.parcelize.Parcelize
 
-// User Object which contains a username, password and level
+// User which contains a username, password and level
 @Parcelize
 data class User(
     var username: String,

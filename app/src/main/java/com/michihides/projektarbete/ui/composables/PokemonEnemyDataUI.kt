@@ -41,7 +41,7 @@ fun PokemonEnemyDataUI(
     }
 
     /* Sets pokemon as a asyncImage and increases it size, sets the name of the pokemon
-    ** as a text with design and saves the sound to a variable long as pokemon isn't null
+    ** as a text with design and saves the sound to a variable
      */
     if (pokemon != null) {
         Column(

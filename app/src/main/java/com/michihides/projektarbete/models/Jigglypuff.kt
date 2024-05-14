@@ -4,7 +4,8 @@ import androidx.compose.ui.graphics.Color
 import com.michihides.projektarbete.ui.theme.Earth
 import com.michihides.projektarbete.ui.theme.Water
 
-// User Object which contains a username, password and level
+// Jigglypuff class which contains attacks, element and strength
+
 class Jigglypuff(
     // Pokemon Ally attacks
     val attackOne: String = "Pound",

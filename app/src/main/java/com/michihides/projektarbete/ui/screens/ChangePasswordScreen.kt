@@ -62,7 +62,7 @@ fun ChangePasswordScreen(
 
     /* Reads a snapshot from the database and updates it's value with the input
     ** as long as the field isn't empty
-     */
+    */
     MainMenuButtonColumn {
         MainMenuButton(buttonText = stringResource(id = R.string.change_password)) {
             userDatabase.addListenerForSingleValueEvent(object : ValueEventListener {

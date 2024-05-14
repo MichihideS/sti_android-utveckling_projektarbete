@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 // Pokemon variables from the API
 class Pokemon {
-    // Since everything had parent folders
+    // Since everything had parent routes
     lateinit var species: Species
     lateinit var sprites: Sprites
     lateinit var cries: Cries

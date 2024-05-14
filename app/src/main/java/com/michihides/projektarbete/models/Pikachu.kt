@@ -5,7 +5,8 @@ import androidx.compose.ui.graphics.Color
 import com.michihides.projektarbete.ui.theme.Earth
 import com.michihides.projektarbete.ui.theme.Fire
 
-// User Object which contains a username, password and level
+// Pikachu class which contains attacks, element and strength
+
 class Pikachu(
     // Pokemon Ally attacks
     val attackOne: String = "Thunderbolt",

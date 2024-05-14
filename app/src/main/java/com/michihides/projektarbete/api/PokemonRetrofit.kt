@@ -1,5 +1,6 @@
 package com.michihides.projektarbete.api
 
+import android.annotation.SuppressLint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +15,7 @@ import kotlin.coroutines.suspendCoroutine
 object PokemonRetrofit {
     private const val BASE_URL = "https://pokeapi.co/api/v2/"
 
-    // Retrofit that converts the JSON with Gson
+    // Retrofit that converts the JSON with Gson and builds the retrofit
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -23,11 +24,15 @@ object PokemonRetrofit {
     }
 
     /* Fetches from the Pokemon API and get the full data back in form of a body depending on what
-    ** Pokemon it is. If not successful will give error with the error response
+    ** Pokemon it is. If not successful will give error with the error throwable response
      */
+
     suspend fun fetchPokemon(pokemonName: String): Pokemon {
         return suspendCoroutine { continuation ->
-            val getPokemonApi: Call<Pokemon> = retrofit.create<PokemonApi>().getData(pokemonName)
+
+            val getPokemonApi by lazy {
+                retrofit.create<PokemonApi>().getData(pokemonName)
+            }
                 getPokemonApi.enqueue(object : Callback<Pokemon> {
 
                 override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {

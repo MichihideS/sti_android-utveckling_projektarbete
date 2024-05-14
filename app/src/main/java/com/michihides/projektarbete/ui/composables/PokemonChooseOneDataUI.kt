@@ -27,7 +27,7 @@ fun PokemonChooseOneDataUI(
         viewModel.fetchPokemonData(pokemonName)
     }
 
-    // Sets pokemon as a asyncImage and increases it size as long as pokemon isn't null
+    // Sets pokemon as a asyncImage and increases it size
     if (pokemon != null) {
         AsyncImage(
             model = pokemon?.sprites?.frontSprite,

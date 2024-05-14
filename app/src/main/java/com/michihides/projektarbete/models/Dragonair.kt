@@ -6,7 +6,7 @@ import com.michihides.projektarbete.ui.theme.Earth
 import com.michihides.projektarbete.ui.theme.Fire
 import com.michihides.projektarbete.ui.theme.Water
 
-// User Object which contains a username, password and level
+// Dragonair class which contains attacks, element and strength
 class Dragonair(
     // Pokemon Ally attacks
     val attackOne: String = "Thunderbolt",
