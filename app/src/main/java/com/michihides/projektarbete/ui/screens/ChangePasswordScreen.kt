@@ -72,6 +72,13 @@ fun ChangePasswordScreen(
                     } else {
                         userDatabase.setValue(user)
                         toastPasswordUpdate.show()
+                        navigator.navigate(
+                            ManageAccountScreenDestination(
+                                username,
+                                password = user.password,
+                                level
+                            )
+                        )
                     }
                 }
 
