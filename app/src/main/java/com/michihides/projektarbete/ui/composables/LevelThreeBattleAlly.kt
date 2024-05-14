@@ -9,10 +9,8 @@ fun levelThreeBattleAlly(
     pokemonElements: Color,
     pokemonAttackStrength: Int
 ): Int {
-    var enemyHealthLoss = 0
-
     // Returns how much health the enemy loses based on what element
-    enemyHealthLoss = when (pokemonElements) {
+    val enemyHealthLoss = when (pokemonElements) {
         Earth -> (pokemonAttackStrength * 1.5).toInt()
         Fire -> (pokemonAttackStrength * 0.5).toInt()
         else -> pokemonAttackStrength

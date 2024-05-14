@@ -98,11 +98,7 @@ fun RegisterScreen(
     }
 
     BoxWithConstraints {
-        if (maxWidth > 500.dp) {
-            hideUi = true
-        } else {
-            hideUi = false
-        }
+        hideUi = maxWidth > 500.dp
     }
 
     UserHandler(

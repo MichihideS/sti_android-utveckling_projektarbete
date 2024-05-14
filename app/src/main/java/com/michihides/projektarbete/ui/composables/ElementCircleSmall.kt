@@ -43,7 +43,7 @@ fun ElementCircleSmall() {
     ) {
         if (maxWidth > 500.dp) {
             hideUi = true
-            Column() {
+            Column {
                 Image(
                     painter = painterResource(id = R.drawable.element_cicle),
                     contentDescription = "",

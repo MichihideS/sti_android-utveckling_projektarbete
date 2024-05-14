@@ -39,7 +39,7 @@ fun BattleMovesColumn(
     ) {
         if (maxWidth > 500.dp) {
             hideUi = true
-            Column() {
+            Column {
                 content()
             }
         } else {
